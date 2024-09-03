@@ -52,11 +52,11 @@ function CustomerSay() {
 		<div
 			className="p-1.5 mt-6 flex flex-col items-start justify-between min-h-[192px]"
 			key={index}>
-			<p className="text-sm leading-5 sm:leading-6 lg:text-base xl:text-lg animate-fade">
+			<p className="text-sm leading-5 sm:leading-6 lg:text-base xl:text-lg animate-fade-right">
 				&quot; {opinions[index].opinion} &quot;
 			</p>
 			<div className="flex flex-col items-center gap-3 mt-6">
-				<div className="flex flex-row items-center gap-3 animate-fade">
+				<div className="flex flex-row items-center gap-3 animate-fade-left">
 					<img
 						onLoad={() => setImgIsLoading(false)}
 						className="hidden"
@@ -82,7 +82,7 @@ function CustomerSay() {
 					</div>
 				</div>
 			</div>
-			<i className="mt-2 text-black opacity-70 text-sm">
+			<i className="mt-2 text-black opacity-70 text-sm animate-fade-right">
 				{opinions[index].firstName}&apos;s Rate :{" "}
 				<span className="text-RED text-base font-semibold">
 					{opinions[index].rate}
