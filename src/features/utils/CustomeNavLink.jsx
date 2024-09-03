@@ -24,7 +24,7 @@ function CustomeNavLink({
 				{children}
 			</NavLink>
 			{haveDropdown && (
-				<div className="dropdown-content flex flex-col items-center z-30 dropdown-bottom mt-5 -gap-1">
+				<div className="dropdown-content flex flex-col items-center z-30 dropdown-bottom mt-5 -gap-1 animate-fade">
 					<Triangle />
 					<ul
 						tabIndex={0}

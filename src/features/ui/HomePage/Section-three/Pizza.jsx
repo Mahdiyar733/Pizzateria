@@ -40,7 +40,7 @@ function Pizza({ src, name, price, viewAmount = 0 }) {
 				<span>Rate</span>
 			</div>
 			<button className="btn bg-RED text-white border-none btn-sm px-8 mb-5">
-				Read more
+				Add to cart
 			</button>
 		</motion.div>
 	);

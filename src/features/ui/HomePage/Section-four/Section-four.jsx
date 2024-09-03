@@ -1,5 +1,3 @@
-import Rating from "./Rating";
-import avatar from "./avatar.png";
 import chief from "./chief.png";
 import onion from "./onion.png";
 import fotor from "./fotor.png";
@@ -7,12 +5,13 @@ import mashroom from "./mashroom.png";
 import papper from "./papper.png";
 import MotionDiv from "../../../utils/MotionDiv";
 import { motion } from "framer-motion";
+import CustomerSay from "./CustomerSay";
 
 function SectionFour() {
 	return (
 		<div
 			id="Customer"
-			className="flex flex-row items-center bg-white bg-opacity-50 p-8 relative sm:p-12 lg:p-20 lg:px-24 xl:px-48 pt-9 sm:pt-9 lg:pt-0 gap-4 lg:gap-9">
+			className="flex flex-row items-center bg-white bg-opacity-50 p-8 relative sm:p-12 lg:p-20 lg:px-24 xl:px-48 pt-9 sm:pt-9 lg:pt-0 gap-4 lg:gap-9 scroll-mt-32">
 			<MotionDiv className="w-full">
 				<div className="flex flex-col items-start gap-3 md:gap-2 lg:gap-4">
 					<h5 className="uppercase text-sm text-RED font-semibold tracking-widest">
@@ -23,29 +22,7 @@ function SectionFour() {
 						to Say About Us
 					</h4>
 				</div>
-				<div className="p-1.5 mt-6 flex flex-col items-start justify-between">
-					<p className="text-sm leading-5 sm:leading-6 lg:text-base xl:text-lg">
-						&quot; Pizzateria is exceptional. With a wide array of delicious
-						meals and excellent service, including remarkably fast delivery, I
-						wholeheartedly recommend Pizzateria to you. &quot;
-					</p>
-					<div className="flex flex-col items-center gap-3 mt-6">
-						<div className="flex flex-row items-center gap-3">
-							<img
-								className="w-12"
-								src={avatar}
-								alt="avatar"
-							/>
-							<div className="flex flex-col items-center gap-1 justify-center">
-								<span className="text-sm text-black font-normal">
-									Aracelly Xaviera
-								</span>
-								<span className="text-xs">Culinary Enthusiast</span>
-							</div>
-						</div>
-						<Rating size="rating-sm" />
-					</div>
-				</div>
+				<CustomerSay />
 			</MotionDiv>
 
 			<div className="hidden md:flex relative items-end justify-center w-[480px] h-[400px] lg:w-[800px] lg:h-[600px] min-w-[252px] lg:min-w-[400px]">
