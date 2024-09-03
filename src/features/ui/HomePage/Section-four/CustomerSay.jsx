@@ -35,13 +35,16 @@ const opinions = [
 
 function CustomerSay() {
 	const [index, setIndex] = useState(0);
+	const [imgIsLoading, setImgIsLoading] = useState(true);
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
 			setIndex((i) => i + 1);
 			if (index === opinions.length - 1) setIndex(0);
 		}, 3000);
-		console.log("rendered");
+
+		setImgIsLoading(true);
+
 		return () => clearTimeout(timer);
 	}, [index]);
 
@@ -55,10 +58,22 @@ function CustomerSay() {
 			<div className="flex flex-col items-center gap-3 mt-6">
 				<div className="flex flex-row items-center gap-3 animate-fade">
 					<img
-						className="w-12 overflow-hidden rounded-full"
+						onLoad={() => setImgIsLoading(false)}
+						className="hidden"
 						src={opinions[index].avatar}
 						alt="avatar"
 					/>
+					{imgIsLoading ? (
+						<div className="w-12 h-12 overflow-hidden rounded-full skeleton bg-gray-700"></div>
+					) : (
+						<img
+							onLoad={() => setImgIsLoading(false)}
+							onError={() => setImgIsLoading(false)}
+							className="w-12 overflow-hidden rounded-full"
+							src={opinions[index].avatar}
+							alt="avatar"
+						/>
+					)}
 					<div className="flex flex-col items-center gap-1 justify-center">
 						<span className="text-sm text-black font-normal">
 							{opinions[index].name}
