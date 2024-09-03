@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/******************************* spiner loading *******************************/
+.loader {
+	width: 82px;
+	height: 18px;
+	position: relative;
+}
+.loader::before,
+.loader::after {
+	content: "";
+	position: absolute;
+	left: 50%;
+	transform: translate(-50%, 10%);
+	top: 0;
+	background: #f54748;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	animation: jump 0.5s ease-in infinite alternate;
+}
+
+.loader::after {
+	background: #0000;
+	color: rgb(0, 0, 0);
+	top: 100%;
+	box-shadow: 32px -20px, -32px -20px;
+	animation: split 0.5s ease-out infinite alternate;
+}
+
+@keyframes split {
+	0% {
+		box-shadow: 8px -20px, -8px -20px;
+	}
+	100% {
+		box-shadow: 32px -20px, -32px -20px;
+	}
+}
+@keyframes jump {
+	0% {
+		transform: translate(-50%, -150%);
+	}
+	100% {
+		transform: translate(-50%, 10%);
+	}
+}
+
+.fade-in {
+	opacity: 0;
+	transition: opacity 0.5s ease-in-out;
+}
+
+.fade-in.visible {
+	opacity: 1;
+}
+
+/******************************* Background blurry *******************************/
+.background {
+	position: fixed;
+	overflow: hidden;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	bottom: 0;
+	right: 0;
+	left: 0;
+	background: linear-gradient(to right, #ffffff, #ffffff);
+	display: flex;
+	flex-grow: 1;
+	z-index: -1;
+}
+
+.background div {
+	position: absolute;
+	border-radius: 100%;
+	height: 0;
+	filter: blur(240vw);
+	opacity: 0.4;
+}
+
+.background div:nth-child(1) {
+	background: linear-gradient(132deg, #f18b9b 0%, #e9e7c0 100%);
+	width: 41%;
+	padding-top: 41%;
+	left: 19%;
+	top: 20%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.background div:nth-child(2) {
+	background: linear-gradient(132deg, #f0cbd2 0%, #eae5ad 100%);
+	width: 34%;
+	padding-top: 34%;
+	left: 70%;
+	top: 53%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+/******************************* Scrollbar customize *******************************/
+
+body {
+	--sb-track-color: #3e4142;
+	--sb-thumb-color: #f54747;
+	--sb-size: 7px;
+}
+
+body::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+
+body::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+	border-radius: 10px;
+}
+
+body::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 10px;
+}
+
+@supports not selector(::-webkit-scrollbar) {
+	body {
+		scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+	}
+}
