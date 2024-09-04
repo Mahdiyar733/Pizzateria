@@ -65,9 +65,9 @@ function Navbar() {
 						to="/">
 						Why Pizzateria?
 					</CustomeNavLink>
+					<CustomeNavLink to="/reservation">Reservation</CustomeNavLink>
 					<CustomeNavLink to="/menu">Menu</CustomeNavLink>
 					<CustomeNavLink to="/cart">Cart</CustomeNavLink>
-					<CustomeNavLink to="/reservation">Reservation</CustomeNavLink>
 					<SearchBtn
 						classes="btn-square"
 						handler={handleOpenModalBox}>

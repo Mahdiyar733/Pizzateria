@@ -10,6 +10,7 @@ import Menu, { loader as MenuLoader } from "./features/menu/Menu";
 import AppLayout from "./features/ui/AppLayout";
 import IsAuthContext from "./features/services/isAuthContext";
 import Reserve from "./features/ui/ReservePage/Reserve";
+import InfoChef from "./features/ui/InfoChef";
 
 const router = createBrowserRouter([
 	{
@@ -27,6 +28,7 @@ const router = createBrowserRouter([
 			{ path: "order/:orderId", element: <Order />, loader: OrderLoader },
 			{ path: "order/new", element: <CreateOrder />, action: NewOrderAction },
 			{ path: "/reservation", element: <Reserve /> },
+			{ path: "/chef/:chefId", element: <InfoChef /> },
 		],
 	},
 ]);

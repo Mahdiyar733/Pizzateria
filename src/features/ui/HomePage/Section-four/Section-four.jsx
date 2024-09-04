@@ -6,21 +6,24 @@ import papper from "./papper.png";
 import MotionDiv from "../../../utils/MotionDiv";
 import { motion } from "framer-motion";
 import CustomerSay from "./CustomerSay";
+import LittleTitle from "../../../utils/LittleTitle";
+import BigTitle from "../../../utils/BigTitle";
+import { useDebounce } from "use-debounce";
 
 function SectionFour() {
+	const [debouncedX] = useDebounce(0, 150);
+
 	return (
 		<div
 			id="Customer"
 			className="flex flex-row items-center bg-white bg-opacity-50 p-8 relative sm:p-12 lg:p-20 lg:px-24 xl:px-48 pt-9 sm:pt-9 lg:pt-0 gap-4 lg:gap-9 scroll-mt-32">
 			<MotionDiv className="w-full">
 				<div className="flex flex-col items-start gap-3 md:gap-2 lg:gap-4">
-					<h5 className="uppercase text-sm text-RED font-semibold tracking-widest">
-						Customer Testimonials{" "}
-					</h5>
-					<h4 className="text-2xl text-black font-semibold sm:text-3xl lg:text-4xl md:font-bold">
+					<LittleTitle color="text-RED">Customer Testimonials</LittleTitle>
+					<BigTitle>
 						What Customers Have <br />
 						to Say About Us
-					</h4>
+					</BigTitle>
 				</div>
 				<CustomerSay />
 			</MotionDiv>
@@ -29,7 +32,7 @@ function SectionFour() {
 				<motion.img
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, x: -100 }}
-					whileInView={{ opacity: 1, x: 0 }}
+					whileInView={{ opacity: 1, x: debouncedX }}
 					transition={{
 						delay: "0.3",
 						type: "spring",
@@ -42,7 +45,7 @@ function SectionFour() {
 				<motion.img
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, y: 100 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					whileInView={{ opacity: 1, y: debouncedX }}
 					transition={{
 						delay: "0.4",
 						type: "spring",
@@ -55,7 +58,7 @@ function SectionFour() {
 				<motion.img
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, y: -100 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					whileInView={{ opacity: 1, y: debouncedX }}
 					transition={{
 						delay: "0.5",
 						type: "spring",

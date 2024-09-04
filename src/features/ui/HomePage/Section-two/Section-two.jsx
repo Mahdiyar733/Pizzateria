@@ -1,3 +1,5 @@
+import BigTitle from "../../../utils/BigTitle";
+import LittleTitle from "../../../utils/LittleTitle";
 import MotionDiv from "../../../utils/MotionDiv";
 import worker1 from "./worker1.png";
 import worker2 from "./worker2.png";
@@ -10,13 +12,11 @@ function SectionTwo() {
 			className={`w-full bg-white bg-opacity-50 p-8 relative sm:p-12 lg:p-20 lg:px-24 xl:px-48 `}>
 			<MotionDiv>
 				<div className="flex flex-col items-start gap-3 md:gap-2 lg:gap-4">
-					<h5 className="uppercase text-sm text-RED font-semibold tracking-widest">
-						Our Offerings
-					</h5>
-					<h4 className="text-2xl text-black font-semibold sm:text-3xl lg:text-4xl md:font-bold">
+					<LittleTitle color="text-RED">Our Offerings</LittleTitle>
+					<BigTitle>
 						Your Preferred Food <br />
 						Delivery Companion
-					</h4>
+					</BigTitle>
 				</div>
 			</MotionDiv>
 			<div className="flex justify-center items-center">

@@ -2,14 +2,17 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import PictureLoader from "../../../utils/PictureLoader";
+import { useDebounce } from "use-debounce";
 
 function Pizza({ src, name, price, viewAmount = 0 }) {
 	const [isLoading, setIsLoading] = useState(true);
+	const [debouncedX] = useDebounce(0, 150);
+
 	return (
 		<motion.div
 			viewport={{ once: true, amount: viewAmount }}
 			initial={{ opacity: 0, y: 50 }}
-			whileInView={{ opacity: 1, y: 0 }}
+			whileInView={{ opacity: 1, y: debouncedX }}
 			transition={{ type: "spring", stiffness: 84 }}
 			className="flex flex-col items-center justify-between border border-gray-300 border-solid rounded-box overflow-hidden bg-gradient-to-t from-white from-80% to-[#2B2B2B] shadow-shdw max-w-[300px]">
 			<img

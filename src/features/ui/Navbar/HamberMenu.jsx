@@ -59,9 +59,9 @@ function HamberMenu() {
 					/>
 				)}
 				<ItemList to="/">Why Pizzateria?</ItemList>
+				<ItemList to="/reservation">Reservation</ItemList>
 				<ItemList to="/menu">Menu</ItemList>
 				<ItemList to="/cart">Cart</ItemList>
-				<ItemList to="/reservation">Reservation</ItemList>
 			</ul>
 		</div>
 	);

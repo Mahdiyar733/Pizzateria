@@ -2,8 +2,11 @@ import PizzaPic from "./PizzaHomeP.jpg";
 import LittlePizza from "./LittlePizza.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { useDebounce } from "use-debounce";
 
 function SectionOne() {
+	const [debouncedX] = useDebounce(0, 150);
+
 	return (
 		<div
 			style={{ backgroundImage: `url(${PizzaPic})` }}
@@ -22,7 +25,7 @@ function SectionOne() {
 				<motion.h2
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, y: 50 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					whileInView={{ opacity: 1, y: debouncedX }}
 					transition={{
 						type: "spring",
 						stiffness: 80,
@@ -34,7 +37,7 @@ function SectionOne() {
 				<motion.p
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, x: -100 }}
-					whileInView={{ opacity: 1, x: 0 }}
+					whileInView={{ opacity: 1, x: debouncedX }}
 					transition={{
 						type: "spring",
 						stiffness: 84,

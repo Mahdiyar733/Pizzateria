@@ -17,7 +17,7 @@ function LoginBtn({ classes }) {
 			<button
 				className={`${classes} btn btn-xs rounded-full bg-RED border-none flex flex-row flex-nowrap items-center md:btn-sm text-white`}>
 				{!isLogined ? <LoginSvg /> : <PersonSvg />}
-				<span>{isLogined ? `${name}` : "Login"}</span>
+				<span className="capitalize">{isLogined ? `${name}` : "Login"}</span>
 			</button>
 		</Link>
 	);

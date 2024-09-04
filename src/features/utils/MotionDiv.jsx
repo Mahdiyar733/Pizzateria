@@ -1,15 +1,26 @@
+/* eslint-disable react/prop-types */
 import { motion } from "framer-motion";
+import { useDebounce } from "use-debounce";
 
-// eslint-disable-next-line react/prop-types
-function MotionDiv({ children, type = 1, delay = 0 }) {
+function MotionDiv({
+	children,
+	type = 1,
+	delay = 0,
+	className,
+	handler = null,
+}) {
+	const [debouncedX] = useDebounce(0, 150);
+
 	return (
 		<>
 			{type == 1 ? (
 				<motion.div
+					onClick={handler}
 					style={{ zIndex: 15 }}
 					viewport={{ once: true, amount: 0.7 }}
 					initial={{ opacity: 0, x: -100 }}
-					whileInView={{ opacity: 1, x: 0 }}
+					whileInView={{ opacity: 1, x: debouncedX }}
+					className={className}
 					transition={{
 						type: "spring",
 						stiffness: 84,
@@ -18,10 +29,12 @@ function MotionDiv({ children, type = 1, delay = 0 }) {
 				</motion.div>
 			) : type == 2 ? (
 				<motion.div
+					onClick={handler}
 					style={{ zIndex: 15 }}
 					viewport={{ once: true, amount: 0.7 }}
-					initial={{ opacity: 0, y: -100 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, y: -55 }}
+					whileInView={{ opacity: 1, y: debouncedX }}
+					className={className}
 					transition={{
 						type: "spring",
 						stiffness: 84,
@@ -30,10 +43,12 @@ function MotionDiv({ children, type = 1, delay = 0 }) {
 				</motion.div>
 			) : (
 				<motion.div
+					onClick={handler}
 					style={{ zIndex: 15 }}
 					viewport={{ once: true, amount: 0.7 }}
-					initial={{ opacity: 0, y: 100 }}
-					whileInView={{ opacity: 1, y: 0 }}
+					initial={{ opacity: 0, y: 55 }}
+					whileInView={{ opacity: 1, y: debouncedX }}
+					className={className}
 					transition={{
 						type: "spring",
 						stiffness: 84,

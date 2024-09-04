@@ -5,6 +5,9 @@ export default {
 
 	theme: {
 		extend: {
+			screens: {
+				base: "926px",
+			},
 			fontFamily: {
 				Poppins: "Poppins , sans-serif",
 			},
@@ -19,8 +22,8 @@ export default {
 		},
 		keyframes: {
 			"slide-in-right": {
-				"0%": { transform: "translateX(100%)" },
-				"100%": { transform: "translateX(0)" },
+				"0%": { transform: "translateX(100%)", opacity: 0 },
+				"100%": { transform: "translateX(0)", opacity: 1 },
 			},
 		},
 	},
