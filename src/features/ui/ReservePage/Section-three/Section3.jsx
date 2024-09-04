@@ -45,7 +45,7 @@ function Chef({ name, src, job, id }) {
 				src={src}
 				alt="chef"
 			/>
-			<span className="text-black font-semibold text-xl mt-5 mb-1 text-nowrap">
+			<span className="text-black font-semibold text-lg mt-5 mb-1 text-nowrap">
 				{name}
 			</span>
 			<span className="text-RED font-normal text-sm">{job}</span>

@@ -6,12 +6,13 @@ import Pizza from "../ui/HomePage/Section-three/Pizza";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../services/isAuthContext";
 import { useDebounce } from "use-debounce";
+import { ScrollUp } from "../utils/helpers";
 
 function Menu() {
 	const menu = useLoaderData();
 	const [inputVal, setInputVal] = useState("");
 	const { isLogined, setIsLogined, name, setName } = useContext(AuthContext);
-	const [debouncedX] = useDebounce(0, 150);
+	const [debouncedX] = useDebounce(0, 250);
 
 	function handleOrdering() {
 		setName(inputVal);
@@ -19,13 +20,7 @@ function Menu() {
 	}
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			window.scrollTo({ top: 0, behavior: "smooth" });
-		}, 130);
-
-		return function clearTimer() {
-			clearTimeout(timer);
-		};
+		ScrollUp();
 	}, []);
 
 	return (

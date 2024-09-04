@@ -1,10 +1,16 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { chefs } from "../services/apiRestaurant";
-
+import { useEffect } from "react";
+import { ScrollUp } from "../utils/helpers";
 function InfoChef() {
 	const param = useParams();
 	const id = param.chefId;
 	const chef = chefs[id - 1];
+	const nav = useNavigate();
+
+	useEffect(() => {
+		ScrollUp();
+	}, []);
 	return (
 		<div className="h-auto w-full bg-white bg-opacity-50 px-6 py-20 flex items-center flex-col">
 			<div className="flex flex-col md:flex-row w-auto items-start px-5 gap-1">
@@ -30,6 +36,11 @@ function InfoChef() {
 				<p className="text-black text-base text-left font-semibold text-opacity-60 tracking-wide pt-4 mt-4 border-t border-solid border-RED">
 					{chef.des}
 				</p>
+				<button
+					onClick={() => nav(-1)}
+					className="px-6 mt-5 py-2 bg-RED text-white rounded-lg">
+					Back
+				</button>
 			</div>
 		</div>
 	);
