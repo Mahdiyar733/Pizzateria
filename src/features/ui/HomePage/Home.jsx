@@ -1,5 +1,3 @@
-// Pictures -----------------------------------
-
 import SectionOne from "./Section-one/Section-one";
 import SectionTwo from "./Section-two/Section-two";
 import SectionThree from "./Section-three/Section-three";

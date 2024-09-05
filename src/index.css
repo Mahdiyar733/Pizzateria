@@ -2,7 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
-progress::-webkit-progress-bar {
+@media (max-width: 768px) {
+	.framer-motion-component {
+		animation: none !important;
+	}
+}
+
+/******************************* Progress style *******************************/
+progress {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
 	background-color: white;
 	height: 6px;
 	overflow: hidden;
@@ -11,6 +21,16 @@ progress::-webkit-progress-bar {
 
 progress::-webkit-progress-value {
 	background-color: #fec55e;
+}
+progress::-moz-progress-bar {
+	background-color: white;
+}
+
+progress::-webkit-progress-value {
+	background-color: #fec55e;
+}
+progress::-webkit-progress-bar {
+	background-color: white;
 }
 
 /******************************* spiner loading *******************************/

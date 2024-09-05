@@ -2,10 +2,13 @@ import PizzaPic from "./PizzaHomeP.jpg";
 import LittlePizza from "./LittlePizza.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useDebounce } from "use-debounce";
+import { useEffect, useState } from "react";
 
 function SectionOne() {
-	const [debouncedX] = useDebounce(0, 500);
+	const [isMobile, setIsMobile] = useState(true);
+	useEffect(() => {
+		if (window.innerWidth > 773) setIsMobile(false);
+	}, []);
 
 	return (
 		<div
@@ -22,30 +25,42 @@ function SectionOne() {
 						alt="pizza"
 					/>
 				</span>
-				<motion.h2
-					viewport={{ once: true, amount: 0.7 }}
-					initial={{ opacity: 0, y: 50 }}
-					whileInView={{ opacity: 1, y: debouncedX }}
-					transition={{
-						type: "spring",
-						stiffness: 80,
-					}}
-					className="text-center text-3xl text-white font-normal tracking-wider sm:text-5xl md:text-6xl">
-					Ensure Your <span className="text-RED font-semibold">Food</span> is{" "}
-					<br /> Delivered with Speed
-				</motion.h2>
-				<motion.p
-					viewport={{ once: true, amount: 0.7 }}
-					initial={{ opacity: 0, x: -100 }}
-					whileInView={{ opacity: 1, x: debouncedX }}
-					transition={{
-						type: "spring",
-						stiffness: 84,
-					}}
-					className="text-center text-white text-xs tracking-wide font-semibold sm:text-lg leading-5">
-					Our mission is to satisfy your appetite with delectable <br /> dishes,
-					delivered swiftly and at no extra cost
-				</motion.p>
+				{!isMobile ? (
+					<motion.h2
+						viewport={{ once: true, amount: 0.7 }}
+						initial={{ opacity: 0, y: 50 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						transition={{
+							type: "just",
+						}}
+						className="text-center text-3xl text-white font-normal tracking-wider sm:text-5xl md:text-6xl">
+						Ensure Your <span className="text-RED font-semibold">Food</span> is{" "}
+						<br /> Delivered with Speed
+					</motion.h2>
+				) : (
+					<h2 className="text-center text-3xl text-white font-normal tracking-wider sm:text-5xl md:text-6xl">
+						Ensure Your <span className="text-RED font-semibold">Food</span> is{" "}
+						<br /> Delivered with Speed
+					</h2>
+				)}
+				{!isMobile ? (
+					<motion.p
+						viewport={{ once: true, amount: 0.7 }}
+						initial={{ opacity: 0, x: -100 }}
+						whileInView={{ opacity: 1, x: 0 }}
+						transition={{
+							type: "just",
+						}}
+						className="text-center text-white text-xs tracking-wide font-semibold sm:text-lg leading-5">
+						Our mission is to satisfy your appetite with delectable <br />{" "}
+						dishes, delivered swiftly and at no extra cost
+					</motion.p>
+				) : (
+					<p className="text-center text-white text-xs tracking-wide font-semibold sm:text-lg leading-5">
+						Our mission is to satisfy your appetite with delectable <br />{" "}
+						dishes, delivered swiftly and at no extra cost
+					</p>
+				)}
 				<Link to="/menu">
 					<button
 						type="button"

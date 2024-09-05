@@ -1,4 +1,4 @@
-import chief from "./chief.png";
+import chef from "./chef.png";
 import onion from "./onion.png";
 import fotor from "./fotor.png";
 import mashroom from "./mashroom.png";
@@ -8,11 +8,9 @@ import { motion } from "framer-motion";
 import CustomerSay from "./CustomerSay";
 import LittleTitle from "../../../utils/LittleTitle";
 import BigTitle from "../../../utils/BigTitle";
-import { useDebounce } from "use-debounce";
 import { useState } from "react";
 
 function SectionFour() {
-	const [debouncedX] = useDebounce(0, 500);
 	const [isLoading, setIsLoading] = useState(true);
 	return (
 		<div
@@ -30,7 +28,7 @@ function SectionFour() {
 			</MotionDiv>
 			<img
 				className="hidden"
-				src={chief}
+				src={chef}
 				alt="chief"
 				onLoad={() => setIsLoading(false)}
 				onError={() => setIsLoading(false)}
@@ -40,7 +38,7 @@ function SectionFour() {
 					<motion.img
 						viewport={{ once: true, amount: 0.7 }}
 						initial={{ opacity: 0, x: -100 }}
-						whileInView={{ opacity: 1, x: debouncedX }}
+						whileInView={{ opacity: 1, x: 0 }}
 						transition={{
 							delay: "0.3",
 							type: "spring",
@@ -53,7 +51,7 @@ function SectionFour() {
 					<motion.img
 						viewport={{ once: true, amount: 0.7 }}
 						initial={{ opacity: 0, y: 100 }}
-						whileInView={{ opacity: 1, y: debouncedX }}
+						whileInView={{ opacity: 1, y: 0 }}
 						transition={{
 							delay: "0.4",
 							type: "spring",
@@ -66,7 +64,7 @@ function SectionFour() {
 					<motion.img
 						viewport={{ once: true, amount: 0.7 }}
 						initial={{ opacity: 0, y: -100 }}
-						whileInView={{ opacity: 1, y: debouncedX }}
+						whileInView={{ opacity: 1, y: 0 }}
 						transition={{
 							delay: "0.5",
 							type: "spring",
@@ -92,7 +90,7 @@ function SectionFour() {
 					<div className="bg-RED w-full lg:w-auto lg:left-5 lg:right-1 xl:left-6 xl:right-2 h-[65%] z-0 absolute bottom-0 right-0 left-0 rounded-tl-[55px] rounded-bl-[55px] lg:rounded-bl-[76px] rounded-tr-[130px] lg:h-[60%] lg:rounded-tl-[76px] lg:rounded-tr-[160px] xl:rounded-bl-3xl"></div>
 					<img
 						className="object-cover w-full h-[90%] object-center z-10"
-						src={chief}
+						src={chef}
 						alt="chief"
 					/>
 				</div>
