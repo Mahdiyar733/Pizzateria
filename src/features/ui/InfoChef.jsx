@@ -1,8 +1,10 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { chefs } from "../services/apiRestaurant";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { ScrollUp } from "../utils/helpers";
 function InfoChef() {
+	const [isLoading, setIsLoading] = useState(true);
+
 	const param = useParams();
 	const id = param.chefId;
 	const chef = chefs[id - 1];
@@ -16,10 +18,21 @@ function InfoChef() {
 			<div className="flex flex-col md:flex-row w-auto items-start px-5 gap-1">
 				<div className="w-full flex flex-col items-center md:flex-1">
 					<img
-						className="max-w-60 rounded-lg mb-4 self-center"
+						className="hidden"
 						src={chef.src}
 						alt={chef.name}
+						onLoad={() => setIsLoading(false)}
+						onError={() => setIsLoading(false)}
 					/>
+					{!isLoading ? (
+						<img
+							className="max-w-60 rounded-lg mb-4 self-center"
+							src={chef.src}
+							alt={chef.name}
+						/>
+					) : (
+						<div className="max-w-60 w-60 h-60 rounded-lg mb-4 self-center skeleton bg-gray-200"></div>
+					)}
 					<h2 className="text-xl text-black font-semibold ">{chef.name}</h2>
 					<h3 className="text-RED font-semibold text-sm mb-4 ">{chef.job}</h3>
 					<div className="flex flex-col bg-RED p-3 gap-1 rounded-lg w-full max-w-[393px] md:max-w-[260px]">
@@ -46,7 +59,7 @@ function InfoChef() {
 					<button
 						onClick={() => nav(-1)}
 						style={{ zIndex: 100 }}
-						className="px-6 mt-5 py-2 bg-RED text-white rounded-lg w-32 md:ml-4 fixed bottom-3 left-3">
+						className="px-6 mt-5 py-2 bg-RED text-white rounded-lg w-32 md:ml-4 fixed bottom-7 left-7">
 						Back
 					</button>
 				</div>

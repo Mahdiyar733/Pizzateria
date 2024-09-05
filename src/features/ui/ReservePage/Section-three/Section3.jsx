@@ -4,6 +4,7 @@ import BigTitle from "../../../utils/BigTitle";
 import LittleTitle from "../../../utils/LittleTitle";
 import MotionDiv from "./../../../utils/MotionDiv";
 import { chefs } from "../../../services/apiRestaurant";
+import { useState } from "react";
 
 function Section3() {
 	return (
@@ -33,6 +34,7 @@ function Section3() {
 
 function Chef({ name, src, job, id }) {
 	const nav = useNavigate();
+	const [isLoading, setIsLoading] = useState(true);
 
 	return (
 		<MotionDiv
@@ -41,10 +43,21 @@ function Chef({ name, src, job, id }) {
 			className="flex flex-col items-center w-1/2 min-w-[155px] max-w-[197px] cursor-pointer hover:outline-2 transition-[outline-color] duration-300 hover:outline-grey-200 hover:outline hover: outline-offset-[12px] rounded-md"
 			key={id}>
 			<img
-				className="rounded-full"
+				className="hidden"
 				src={src}
 				alt="chef"
+				onLoad={() => setIsLoading(false)}
+				onError={() => setIsLoading(false)}
 			/>
+			{!isLoading ? (
+				<img
+					className="rounded-full"
+					src={src}
+					alt="chef"
+				/>
+			) : (
+				<div className="rounded-full w-36 h-36 skeleton bg-gray-200"></div>
+			)}
 			<span className="text-black font-semibold text-lg mt-5 mb-1 text-nowrap">
 				{name}
 			</span>
