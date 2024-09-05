@@ -48,7 +48,7 @@ function Navbar() {
 				{isOpenMenu && <HamberMenu />}
 				{!isOpenMenu && (
 					<button
-						className="btn btn-ghost no-animation btn-square flex md:hidden animate-fade-left animate-duration-200"
+						className="no-animation btn-square flex md:hidden animate-fade-left animate-duration-200 justify-center items-center"
 						onClick={handleOpenMenu}>
 						<MenuSvg />
 					</button>
@@ -82,6 +82,7 @@ function Navbar() {
 
 function PizzaLogo({ classes }) {
 	const { handleCloseMenu } = useContext(NavbarContext);
+	const [isLoading, setIsLoading] = useState(true);
 
 	return (
 		<Link
@@ -90,9 +91,21 @@ function PizzaLogo({ classes }) {
 			<div className={`${classes} flex flex-row items-center gap-2`}>
 				<img
 					src={Logo}
-					className="w-12 object-cover"
+					className="hidden"
 					alt="logo"
+					onLoad={() => setIsLoading(false)}
 				/>
+				{!isLoading ? (
+					<img
+						src={Logo}
+						className="w-12 object-cover"
+						alt="logo"
+						onLoad={() => setIsLoading(false)}
+						onError={() => setIsLoading(false)}
+					/>
+				) : (
+					<div className="skeleton w-11 rounded-full h-11 bg-gray-200"></div>
+				)}
 				<h1 className="font-bold text-2xl tracking-tight">Pizzateria</h1>
 			</div>
 		</Link>

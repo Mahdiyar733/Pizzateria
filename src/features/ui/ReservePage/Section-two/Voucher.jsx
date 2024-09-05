@@ -5,7 +5,7 @@ import DiscountPic from "./Discount.png";
 import { motion } from "framer-motion";
 
 function Voucher({ bg, percent, val }) {
-	const [debouncedX] = useDebounce(0, 150);
+	const [debouncedX] = useDebounce(0, 500);
 
 	return (
 		<motion.div

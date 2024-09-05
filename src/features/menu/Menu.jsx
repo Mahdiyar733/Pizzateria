@@ -12,7 +12,7 @@ function Menu() {
 	const menu = useLoaderData();
 	const [inputVal, setInputVal] = useState("");
 	const { isLogined, setIsLogined, name, setName } = useContext(AuthContext);
-	const [debouncedX] = useDebounce(0, 250);
+	const [debouncedX] = useDebounce(0, 500);
 
 	function handleOrdering() {
 		setName(inputVal);

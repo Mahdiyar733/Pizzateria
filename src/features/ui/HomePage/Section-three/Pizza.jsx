@@ -6,7 +6,7 @@ import { useDebounce } from "use-debounce";
 
 function Pizza({ src, name, price, viewAmount = 0 }) {
 	const [isLoading, setIsLoading] = useState(true);
-	const [debouncedX] = useDebounce(0, 150);
+	const [debouncedX] = useDebounce(0, 500);
 
 	return (
 		<motion.div

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { useDebounce } from "use-debounce";
 
 function SectionOne() {
-	const [debouncedX] = useDebounce(0, 150);
+	const [debouncedX] = useDebounce(0, 500);
 
 	return (
 		<div

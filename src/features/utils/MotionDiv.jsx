@@ -9,7 +9,7 @@ function MotionDiv({
 	className,
 	handler = null,
 }) {
-	const [debouncedX] = useDebounce(0, 150);
+	const [debouncedX] = useDebounce(0, 500);
 
 	return (
 		<>

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import BigTitle from "../../../utils/BigTitle";
 import LittleTitle from "../../../utils/LittleTitle";
 import MotionDiv from "../../../utils/MotionDiv";
@@ -6,6 +7,9 @@ import worker2 from "./worker2.png";
 import worker3 from "./worker3.png";
 
 function SectionTwo() {
+	const [isLoading1, setIsLoading1] = useState(true);
+	const [isLoading2, setIsLoading2] = useState(true);
+	const [isLoading3, setIsLoading3] = useState(true);
 	return (
 		<div
 			id="OurOffering"
@@ -26,10 +30,21 @@ function SectionTwo() {
 						delay="0.3">
 						<div className="shadow-shdw h-80 lg:h-[330px] rounded-3xl w-full flex flex-col items-center justify-center p-2 pb-8 lg:pb-7 md:p-5 gap-3 max-w-[288px] min-w-[234px] md:min-w-fit bg-white">
 							<img
-								className="w-40"
+								className="hidden"
 								src={worker1}
+								onLoad={() => setIsLoading1(false)}
+								onError={() => setIsLoading1(false)}
 								alt="worker1"
 							/>
+							{!isLoading1 ? (
+								<img
+									className="w-40"
+									src={worker1}
+									alt="worker1"
+								/>
+							) : (
+								<div className="w-40 h-full bg-gray-200 skeleton"></div>
+							)}
 							<h4 className="text-black font-bold text-lg md:text-base lg:text-lg">
 								Convenient Ordering
 							</h4>
@@ -46,7 +61,18 @@ function SectionTwo() {
 								className="w-40"
 								src={worker2}
 								alt="worker2"
+								onLoad={() => setIsLoading2(false)}
+								onError={() => setIsLoading2(false)}
 							/>
+							{!isLoading2 ? (
+								<img
+									className="hidden"
+									src={worker2}
+									alt="worker2"
+								/>
+							) : (
+								<div className="w-40 h-full skeleton bg-gray-200"></div>
+							)}
 							<h4 className="text-black font-bold text-lg md:text-base lg:text-lg">
 								Quickest Delivery{" "}
 							</h4>
@@ -60,11 +86,25 @@ function SectionTwo() {
 						delay="0.5">
 						<div className="shadow-shdw h-80 lg:h-[330px] rounded-3xl w-full flex flex-col items-center  p-2 pb-8 lg:pb-7 md:p-5 gap-3 max-w-[288px] min-w-[234px] md:min-w-fit bg-white justify-center">
 							<img
-								className="w-40"
+								className="hidden"
 								style={{ height: "167.65px" }}
 								src={worker3}
 								alt="worker3"
+								onLoad={() => setIsLoading3(false)}
+								onError={() => setIsLoading3(false)}
 							/>
+							{!isLoading3 ? (
+								<img
+									className="w-40"
+									style={{ height: "167.65px" }}
+									src={worker3}
+									alt="worker3"
+								/>
+							) : (
+								<div
+									className="w-40 skeleton bg-gray-200"
+									style={{ height: "167.65px" }}></div>
+							)}
 							<h4 className="text-black font-bold text-lg md:text-base lg:text-lg">
 								Superior Quality{" "}
 							</h4>
