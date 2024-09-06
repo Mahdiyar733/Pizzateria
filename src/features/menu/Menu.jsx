@@ -5,14 +5,12 @@ import { motion } from "framer-motion";
 import Pizza from "../ui/HomePage/Section-three/Pizza";
 import { Fragment, useContext, useEffect, useState } from "react";
 import { AuthContext } from "../services/isAuthContext";
-import { useDebounce } from "use-debounce";
 import { ScrollUp } from "../utils/helpers";
 
 function Menu() {
 	const menu = useLoaderData();
 	const [inputVal, setInputVal] = useState("");
 	const { isLogined, setIsLogined, name, setName } = useContext(AuthContext);
-	const [debouncedX] = useDebounce(0, 500);
 
 	function handleOrdering() {
 		setName(inputVal);
@@ -55,7 +53,7 @@ function Menu() {
 				<Fragment>
 					<motion.div
 						initial={{ opacity: 0, y: -50 }}
-						animate={{ opacity: 1, y: debouncedX }}
+						animate={{ opacity: 1, y: 0 }}
 						transition={{
 							type: "spring",
 							stiffness: 80,

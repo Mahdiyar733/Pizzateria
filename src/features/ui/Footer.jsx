@@ -7,7 +7,7 @@ function Footer() {
 	return (
 		<footer className="footer footer-center bg-white text-primary-content p-10 pt-0">
 			<div className="sm:px-9 border-t border-solid border-RED h-full w-full pt-10 border-opacity-50">
-				<aside className="flex justify-center items-center flex-col gap-3">
+				<aside className="flex justify-center items-center flex-col gap-3 text-black">
 					<img
 						className="w-20"
 						src={Logo}

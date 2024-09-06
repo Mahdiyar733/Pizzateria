@@ -23,7 +23,7 @@ export function calcMinutesLeft(dateStr) {
 export function ScrollUp() {
 	const timer = setTimeout(() => {
 		window.scrollTo({ top: 0, behavior: "smooth" });
-	}, 130);
+	}, 250);
 
 	return () => clearTimeout(timer);
 }

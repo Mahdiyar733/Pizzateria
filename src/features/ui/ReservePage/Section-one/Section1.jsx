@@ -1,21 +1,23 @@
+/* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
 import TablePic from "./table.png";
 import LittleTitle from "../../../utils/LittleTitle";
 import BigTitle from "../../../utils/BigTitle";
 import MotionDiv from "../../../utils/MotionDiv";
-import Alert from "../../../utils/Alert";
+import ReserveModal from "./ReserveModal";
 
 function Section1() {
 	const [ordererName, setOrederName] = useState("");
 	const [phone, setPhone] = useState("");
 	const [NumberPpl, setNumberPpl] = useState("");
 	const [isOpenAlert, setIsOpenAlert] = useState(false);
+	const [isOpenModalBox, setIsOpenModalBox] = useState(false);
 	const [btnIsDisable, setBtnIsDisable] = useState(false);
 
 	function handleSubmit(e) {
 		if (!ordererName.trim() || !phone.trim() || !NumberPpl.trim()) return;
 		e.preventDefault();
-		setIsOpenAlert(true);
+		setIsOpenModalBox(true);
 		setBtnIsDisable(true);
 	}
 
@@ -108,11 +110,61 @@ function Section1() {
 					src={TablePic}
 				/>
 			</div>
-			<Alert isVisible={isOpenAlert}>
-				Your place reserved successfully !{" "}
-				<span className="text-RED text-xl capitalize">{ordererName}</span>
-			</Alert>
+			<ModalBox
+				ordererName={ordererName}
+				phone={phone}
+				NumberPpl={NumberPpl}
+				setIsOpenModalBox={setIsOpenModalBox}
+				isOpenModalBox={isOpenModalBox}
+			/>
 		</div>
+	);
+}
+
+function ModalBox({
+	ordererName,
+	phone,
+	NumberPpl,
+	setIsOpenModalBox,
+	isOpenModalBox,
+}) {
+	return (
+		<ReserveModal isVisible={isOpenModalBox}>
+			<span className="text-white text-xs font-normal w-full bg-RED p-3 rounded-lg flex flex-row items-center justify-between">
+				Orderer&apos;s name :{" "}
+				<span className="text-xs bg-white text-RED py-1 px-4 rounded-md">
+					{ordererName}
+				</span>
+			</span>
+			<span className="text-white text-xs font-normal w-full bg-RED p-3 rounded-lg flex flex-row items-center justify-between">
+				Phone :{" "}
+				<span className="text-xs bg-white text-RED py-1 px-4 rounded-md">
+					{phone}
+				</span>
+			</span>
+			<span className="text-white text-xs font-normal w-full bg-RED p-3 rounded-lg flex flex-row items-center justify-between">
+				Number of people{" "}
+				<span className="text-xs bg-white text-RED py-1 px-4 rounded-md">
+					{NumberPpl}
+				</span>
+			</span>
+			<span className="text-black text-xs font-normal w-full px-1 py-1 rounded-lg flex flex-row items-center justify-between">
+				Price of reserve{" "}
+				<span className="text-xs bg-black text-white py-1 px-4 rounded-md">
+					20$
+				</span>
+			</span>
+			<div className="w-full flex flex-row gap-3 items-center justify-center mt-2">
+				<button className="px-12 text-sm py-2 border border-RED border-solid bg-RED text-white font-normal rounded-md">
+					Pay
+				</button>
+				<button
+					onClick={() => setIsOpenModalBox(false)}
+					className="px-6 text-sm py-2 bg-transparent border border-RED border-solid text-RED font-normal rounded-md">
+					Cancel
+				</button>
+			</div>
+		</ReserveModal>
 	);
 }
 
