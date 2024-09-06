@@ -8,6 +8,10 @@
 	}
 }
 
+html {
+	background-color: white;
+}
+
 /******************************* Progress style *******************************/
 progress {
 	-webkit-appearance: none;
@@ -33,7 +37,27 @@ progress::-webkit-progress-bar {
 	background-color: white;
 }
 
+/******************************* Shake ani  *******************************/
+
+.shakeAni {
+	animation: customAni 1500ms ease 500ms 1 normal none;
+}
+
+@keyframes customAni {
+	0%,
+	50%,
+	100% {
+		opacity: 1;
+	}
+
+	25%,
+	75% {
+		opacity: 0;
+	}
+}
+
 /******************************* spiner loading *******************************/
+
 .loader {
 	width: 82px;
 	height: 18px;
@@ -130,22 +154,33 @@ progress::-webkit-progress-bar {
 }
 
 /******************************* Scrollbar customize *******************************/
+.infoChef {
+	--sb-track-color: #3e4142;
+	--sb-thumb-color: #f54747;
+	--sb-size: 7px;
+}
+.infoChef::-webkit-scrollbar {
+	width: var(--sb-size);
+}
+.infoChef::-webkit-scrollbar-track {
+	background: var(--sb-track-color);
+}
+.infoChef::-webkit-scrollbar-thumb {
+	background: var(--sb-thumb-color);
+	border-radius: 10px;
+}
 
 body {
 	--sb-track-color: #3e4142;
 	--sb-thumb-color: #f54747;
 	--sb-size: 7px;
 }
-
 body::-webkit-scrollbar {
 	width: var(--sb-size);
 }
-
 body::-webkit-scrollbar-track {
 	background: var(--sb-track-color);
-	border-radius: 10px;
 }
-
 body::-webkit-scrollbar-thumb {
 	background: var(--sb-thumb-color);
 	border-radius: 10px;
