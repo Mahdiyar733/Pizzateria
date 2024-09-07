@@ -52,7 +52,7 @@ function InfoChef() {
 						</h4>
 					</div>
 				</div>
-				<div className=" relative flex flex-col mt-4 border-t border-solid border-RED md:mt-0 md:border-t-0 md:border-l md:flex-1 lg:flex-[2] md:max-h-[396px] md:min-h-[396px] overflow-y-scroll infoChef">
+				<div className="relative flex flex-col mt-4 border-t border-solid border-RED md:mt-0 md:border-t-0 md:border-l md:flex-1 lg:flex-[2] max-h-96 md:max-h-[396px] md:min-h-[396px] overflow-y-scroll infoChef">
 					<p className="text-black text-base text-left font-semibold text-opacity-60 tracking-wide pt-4 md:pt-0 md:px-7 lg:text-lg lg:font-normal">
 						{chef.des}
 					</p>
