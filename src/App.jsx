@@ -12,13 +12,14 @@ import IsAuthContext from "./features/services/isAuthContext";
 import Reserve from "./features/ui/ReservePage/Reserve";
 import InfoChef from "./features/ui/InfoChef";
 import PageNotFound from "./features/ui/PageNotFound";
+import CreateUser from "./features/user/CreateUser";
 
 const router = createBrowserRouter([
 	{
 		element: <AppLayout />,
 		errorElement: <Error />,
 		children: [
-			{ path: "/", element: <Home /> },
+			{ path: "/", element: <Home />, loader: MenuLoader },
 			{ path: "/cart", element: <Cart /> },
 			{
 				path: "/menu",
@@ -30,6 +31,7 @@ const router = createBrowserRouter([
 			{ path: "order/new", element: <CreateOrder />, action: NewOrderAction },
 			{ path: "/reservation", element: <Reserve /> },
 			{ path: "/chef/:chefId", element: <InfoChef /> },
+			{ path: "/createUser", element: <CreateUser /> },
 			{ path: "*", element: <PageNotFound /> },
 		],
 	},

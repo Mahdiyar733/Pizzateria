@@ -5,12 +5,11 @@ import LittleTitle from "../../../utils/LittleTitle";
 import BigTitle from "../../../utils/BigTitle";
 import MotionDiv from "../../../utils/MotionDiv";
 import ReserveForm from "./ReserveForm";
-import ModalBox from "./ModalBox";
+import ReserveModalBox from "./ReserveModalBox";
 
 export const ReserveContext = createContext();
 
 function Section1() {
-	const [isOpenModalBox, setIsOpenModalBox] = useState(false);
 	const [errors, setErrors] = useState({});
 	const [formData, setFormData] = useState({
 		name: "",
@@ -23,8 +22,6 @@ function Section1() {
 			value={{
 				formData,
 				setFormData,
-				isOpenModalBox,
-				setIsOpenModalBox,
 				errors,
 				setErrors,
 			}}>
@@ -47,7 +44,7 @@ function Section1() {
 						src={TablePic}
 					/>
 				</div>
-				<ModalBox />
+				<ReserveModalBox />
 			</div>
 		</ReserveContext.Provider>
 	);

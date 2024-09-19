@@ -6,10 +6,11 @@ function MenuHeader({ name, isNamed }) {
 		<div className="flex flex-col items-center gap-3 md:gap-2 lg:gap-4">
 			<LittleTitle color="text-RED">Our Selection</LittleTitle>
 			<h4
-				className={`text-2xl text-black font-semibold sm:text-3xl lg:text-4xl md:font-bold text-center`}>
+				className={`text-2xl text-black font-semibold sm:text-3xl lg:text-4xl md:font-bold text-center leading-10`}>
 				{isNamed && "Hi"}{" "}
 				{isNamed && <span className="text-RED capitalize">{name}</span>}
-				{isNamed && ", there's a"} A Menu That Will Always <br /> Capture Your
+				<br />
+				{isNamed ? "There's a" : "A"} Menu That Will Always <br /> Capture Your
 				Heart
 			</h4>
 		</div>

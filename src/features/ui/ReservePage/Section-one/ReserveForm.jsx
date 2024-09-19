@@ -1,18 +1,15 @@
-import { useContext, useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef } from "react";
 import { ScrollUp } from "../../../utils/helpers";
 import { ReserveContext } from "./Section1";
+import { useDispatch, useSelector } from "react-redux";
+import { openReserve } from "../../../utils/ModalBoxSlice";
 
 function ReserveForm() {
-	const [btnIsDisable, setBtnIsDisable] = useState(false);
+	const isOpen = useSelector((state) => state.modalBox.isOpenReserve);
 	const bodyRef = useRef();
-	const {
-		errors,
-		setErrors,
-		formData,
-		setFormData,
-		isOpenModalBox,
-		setIsOpenModalBox,
-	} = useContext(ReserveContext);
+	const dis = useDispatch();
+	const { errors, setErrors, formData, setFormData } =
+		useContext(ReserveContext);
 
 	const handleChange = (e) => {
 		const { name, value } = e.target;
@@ -72,30 +69,19 @@ function ReserveForm() {
 		if (!isValid) {
 			return;
 		} else {
-			setIsOpenModalBox(true);
-			setBtnIsDisable(true);
+			dis(openReserve());
 		}
 	}
 
 	useEffect(() => {
 		bodyRef.current = document.body;
 
-		if (isOpenModalBox) {
+		if (isOpen) {
 			bodyRef.current.style = "overflow: hidden";
 		} else {
 			bodyRef.current.style = "overflow: auto";
 		}
-
-		if (!isOpenModalBox) {
-			const timerw = setTimeout(() => {
-				setBtnIsDisable(false);
-			}, 1);
-
-			return () => {
-				clearTimeout(timerw);
-			};
-		}
-	}, [isOpenModalBox]);
+	}, [isOpen]);
 
 	return (
 		<form className="flex flex-col items-center gap-3 sm:gap-5 md:items-start max-w-[400px]">
@@ -149,21 +135,13 @@ function ReserveForm() {
 					)}
 				</div>
 			</div>
-			{!btnIsDisable ? (
-				<button
-					className="bg-black text-white rounded-full px-5 py-2.5 lg:py-3 lg:px-7 text-xs hover:bg-PINK hover:text-black transition-all duration-300 animate-fade"
-					onClick={handleSubmit}
-					type="button">
-					Reservation
-				</button>
-			) : (
-				<button
-					disabled={true}
-					className="bg-black text-white rounded-full px-5 py-2.5 lg:py-3 lg:px-7 text-xs"
-					type="button">
-					Reservation
-				</button>
-			)}
+			<button
+				disabled={isOpen}
+				className="bg-black text-white rounded-full px-5 py-2.5 lg:py-3 lg:px-7 text-xs hover:bg-PINK hover:text-black transition-all duration-300 animate-fade"
+				onClick={handleSubmit}
+				type="button">
+				Reservation
+			</button>
 		</form>
 	);
 }

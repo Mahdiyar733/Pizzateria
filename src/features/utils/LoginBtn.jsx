@@ -3,16 +3,17 @@ import { Link } from "react-router-dom";
 import LoginSvg from "../../svg/LoginSvg";
 import { useContext } from "react";
 import { NavbarContext } from "../ui//Navbar/Navbar";
-import { AuthContext } from "../services/isAuthContext";
 import PersonSvg from "../../svg/PersonSvg";
+import { useSelector } from "react-redux";
 
 function LoginBtn({ classes }) {
 	const { handleCloseMenu } = useContext(NavbarContext);
-	const { isLogined, name } = useContext(AuthContext);
+	const name = useSelector((state) => state.user.username);
+	const isLogined = name.trim() !== "";
 
 	return (
 		<Link
-			to={isLogined ? `order/new` : `/menu`}
+			to={`/createUser`}
 			onClick={handleCloseMenu}>
 			<button
 				className={`${classes} btn btn-xs rounded-full bg-RED border-none flex flex-row flex-nowrap items-center md:btn-sm text-white`}>

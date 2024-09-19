@@ -1,26 +1,33 @@
 import { useContext } from "react";
 import { ReserveContext } from "./Section1";
-import ReserveModal from "./ReserveModal";
 import NameSvg from "../../../../svg/NameSvg";
 import PhoneSvg from "../../../../svg/PhoneSvg";
 import FamilySvg from "../../../../svg/FamilySvg";
+import ModalBoxAnimate from "../../../utils/ModalBoxAnimate";
+import { useDispatch, useSelector } from "react-redux";
+import { closeReserve } from "../../../utils/ModalBoxSlice";
+import CloseBtnModal from "../../../utils/CloseBtnModal";
 
-function ModalBox() {
-	const { formData, setFormData, setIsOpenModalBox, isOpenModalBox } =
-		useContext(ReserveContext);
+function ReserveModalBox() {
+	const { formData, setFormData } = useContext(ReserveContext);
+	const dis = useDispatch();
+	const isOpen = useSelector((state) => state.modalBox.reserve.isOpenReserve);
+	console.log(isOpen);
 
 	function handleSubmit() {
-		setIsOpenModalBox(false);
+		dis(closeReserve());
 		setFormData({ name: "", phone: "", ppl: "" });
 	}
 
 	function handleClose(e) {
 		e.preventDefault();
-		setIsOpenModalBox(false);
+		dis(closeReserve());
 	}
 
 	return (
-		<ReserveModal isVisible={isOpenModalBox}>
+		<ModalBoxAnimate
+			handler={handleClose}
+			isVisible={isOpen}>
 			<span className="text-white text-xs font-normal w-full bg-RED p-3 rounded-lg flex flex-row items-center justify-between">
 				<div className="flex flex-row items-center justify-center gap-2">
 					<NameSvg />
@@ -65,15 +72,10 @@ function ModalBox() {
 						Pay
 					</button>
 				</a>
-				<button
-					onClick={handleClose}
-					className="px-6 text-sm py-2 bg-transparent border border-RED border-solid text-RED font-normal rounded-md hover:bg-RED transition-all duration-300 hover:border-white hover:px-10 hover:text-white"
-					type="button">
-					Cancel
-				</button>
+				<CloseBtnModal handler={handleClose}>Cancel</CloseBtnModal>
 			</div>
-		</ReserveModal>
+		</ModalBoxAnimate>
 	);
 }
 
-export default ModalBox;
+export default ReserveModalBox;

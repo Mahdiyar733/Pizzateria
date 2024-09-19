@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import SpinnerFullpage from "./Spinner";
 import { useNavigation } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
+
 function AppLayout() {
 	const navigation = useNavigation();
 	const isLoading = navigation.state === "loading";

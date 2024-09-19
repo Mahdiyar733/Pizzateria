@@ -13,6 +13,7 @@ function InfoChef() {
 	useEffect(() => {
 		ScrollUp();
 	}, []);
+
 	return (
 		<div className="h-auto w-full bg-white bg-opacity-50 px-6 py-20 flex items-center flex-col">
 			<div className="flex flex-col md:flex-row w-auto items-start px-5 gap-1">

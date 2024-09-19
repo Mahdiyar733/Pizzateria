@@ -109,7 +109,7 @@ function Footer() {
 					</div>
 				</main>
 			</div>
-			<p className="font-normal opacity-50 flex flex-row items-center border-t border-solid border-RED w-full sm:w-5/6 md:w-full base:w-[90%] lg:w-[93%] xl:w-5/6 justify-center pt-4">
+			<p className="font-normal opacity-50 flex flex-row items-center border-t border-solid border-RED w-full sm:w-5/6 md:w-full base:w-[90%] lg:w-[93%] xl:w-5/6 justify-center pt-4 text-xs sm:text-sm">
 				Copyright © <span className="text-RED">{new Date().getFullYear()}</span>
 				- All right reserved by Mahdiyar
 			</p>
