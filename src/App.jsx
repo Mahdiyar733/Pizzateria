@@ -8,7 +8,6 @@ import CreateOrder, {
 import Cart from "./features/cart/Cart";
 import Menu, { loader as MenuLoader } from "./features/menu/Menu";
 import AppLayout from "./features/ui/AppLayout";
-import IsAuthContext from "./features/services/isAuthContext";
 import Reserve from "./features/ui/ReservePage/Reserve";
 import InfoChef from "./features/ui/InfoChef";
 import PageNotFound from "./features/ui/PageNotFound";
@@ -38,11 +37,7 @@ const router = createBrowserRouter([
 ]);
 
 function App() {
-	return (
-		<IsAuthContext>
-			<RouterProvider router={router} />
-		</IsAuthContext>
-	);
+	return <RouterProvider router={router} />;
 }
 
 export default App;

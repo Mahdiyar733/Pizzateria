@@ -60,7 +60,7 @@ function InfoChef() {
 					<button
 						onClick={() => nav(-1)}
 						style={{ zIndex: 100 }}
-						className="px-6 mt-5 py-2 bg-RED text-white rounded-lg w-32 md:ml-4 fixed bottom-7 left-7">
+						className="px-6 my-5 py-2 bg-RED text-white rounded-lg w-32 md:ml-7 hover:bg-PINK transition-colors duration-300 ">
 						Back
 					</button>
 				</div>

@@ -2,11 +2,11 @@
 import { motion } from "framer-motion";
 import { createContext, useContext, useEffect, useState } from "react";
 import PictureLoader from "../../../utils/PictureLoader";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { openIngredients } from "../../../utils/ModalBoxSlice";
 import { addItem } from "../../../cart/cartSlice";
-import IsAuthContext, { AuthContext } from "../../../services/isAuthContext";
 import { useNavigate } from "react-router-dom";
+import { toastFnc } from "../../../utils/toast";
 
 const PizzaContext = createContext();
 
@@ -52,6 +52,11 @@ function Pizza({ item, viewAmount = 0 }) {
 }
 
 function PizzaCart() {
+	const nav = useNavigate();
+	const username = useSelector((state) => state.user.username);
+	const cart = useSelector((state) => state.cart.cart);
+	const [isAdded, setIsAdded] = useState(false);
+
 	const {
 		imageUrl,
 		isLoading,
@@ -62,23 +67,31 @@ function PizzaCart() {
 		dis,
 		item,
 	} = useContext(PizzaContext);
-	const { isLogined } = useContext(AuthContext);
-	const nav = useNavigate();
+
+	function toastAdd() {
+		toastFnc(`${item.name} Added to cart`);
+	}
 
 	function handleAddToCart(item) {
-		if (isLogined) {
+		if (username) {
 			const newItem = {
 				...item,
 				quantity: 1,
 			};
+			toastAdd();
 			dis(addItem(newItem));
 		} else {
 			nav("/createUser");
 		}
 	}
 
+	useEffect(() => {
+		const isDuplicated = cart.find((cartItem) => cartItem.id === item.id);
+		if (isDuplicated) setIsAdded(true);
+	}, [cart, item]);
+
 	return (
-		<IsAuthContext>
+		<>
 			<img
 				src={imageUrl}
 				alt={name}
@@ -98,6 +111,7 @@ function PizzaCart() {
 			) : (
 				<PictureLoader />
 			)}
+
 			<div className="flex flex-col items-center justify-center py-2">
 				<span className="text-black font-semibold text-xl tracking-tight">
 					{name}
@@ -113,19 +127,30 @@ function PizzaCart() {
 				</button>
 			</div>
 			{!soldOut ? (
-				<button
-					className="border border-solid border-RED rounded-lg hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
-					onClick={() => handleAddToCart(item)}>
-					Add to cart
-				</button>
+				!isAdded ? (
+					<button
+						title="For Adding"
+						className="border border-solid border-RED rounded-lg hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
+						onClick={() => handleAddToCart(item)}>
+						Add to cart
+					</button>
+				) : (
+					<button
+						className="border border-solid border-RED rounded-lg hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-9 mb-5"
+						title="For Quantity"
+						onClick={() => nav("/cart")}>
+						Go to cart
+					</button>
+				)
 			) : (
 				<button
+					title="Solded out"
 					disabled={true}
-					className="border border-solid border-gray-400 rounded-lg cursor-not-allowed bg-gray-400 text-white py-1.5 px-8 mb-5">
+					className="border-x-[3px] border-y border-solid border-gray-400 rounded-lg cursor-not-allowed bg-gray-400 text-white py-1.5 px-11 mb-5">
 					Soldout
 				</button>
 			)}
-		</IsAuthContext>
+		</>
 	);
 }
 

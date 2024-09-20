@@ -12,8 +12,7 @@ import { useDispatch } from "react-redux";
 import { decrease, deleteItem, increase } from "./cartSlice";
 
 function CartItem({ item }) {
-	const { setIsOpenDetails, setCurrItem, currItem } =
-		useContext(CartItemContext);
+	const { setIsOpenDetails, setCurrItem } = useContext(CartItemContext);
 	const { id, name, quantity } = item;
 	const dis = useDispatch();
 
@@ -35,9 +34,7 @@ function CartItem({ item }) {
 	}
 
 	return (
-		<div
-			className="flex flex-row items-center w-full bg-PINK p-3 rounded-lg text-xs text-black justify-between"
-			key={id}>
+		<div className="flex flex-row items-center w-full bg-PINK p-3 rounded-lg text-xs text-black justify-between animate-fade-left animate-duration-500">
 			<div className="flex flex-row items-center gap-1 sm:gap-2">
 				<span
 					id={id}
@@ -65,15 +62,17 @@ function CartItem({ item }) {
 					<IncreaseSvg />
 				</button>
 			</div>
-			<CartItemModalBox item={currItem} />
 		</div>
 	);
 }
 
-function CartItemModalBox({ item }) {
+export function CartItemModalBox({ item }) {
 	const { name, quantity, unitPrice } = item;
 	const { isOpenDetails, setIsOpenDetails } = useContext(CartItemContext);
 	const totalPrice = unitPrice * quantity;
+
+	console.log(item);
+
 	function handleCloseDetailsModal(e) {
 		e.preventDefault();
 		setIsOpenDetails(false);

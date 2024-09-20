@@ -7,11 +7,14 @@ function NotFound() {
 	console.log(err.data);
 
 	return (
-		<div className="h-dvh w-full flex flex-col justify-center items-center gap-4">
-			<h1>Something went wrong 😢</h1>
-			<p>{err.data || err.message}</p>
+		<div className="h-dvh w-full flex flex-col justify-center items-center gap-7 bg-gradient-to-r from-white to-PINK text-black">
+			<h1 className="font-semibold text-2xl">Something went wrong 😢</h1>
+			<p className="text-lg font-normal text-wrap">
+				{" "}
+				- {err.data || err.message}
+			</p>
 			<button
-				className="btn btn-error rounded-lg"
+				className="bg-RED px-5 font-normal py-2 text-white flex justify-center items-start rounded-lg"
 				onClick={() => navigate(-1)}>
 				&larr; Go back
 			</button>

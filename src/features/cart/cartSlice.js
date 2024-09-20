@@ -31,8 +31,6 @@ const cartReducer = createSlice({
 		},
 		increase(state, action) {
 			const item = state.cart.find((item) => item.id == action.payload);
-			console.log("item:", item);
-
 			item.quantity++;
 			item.totalPrice = item.quantity * item.unitPrice;
 		},

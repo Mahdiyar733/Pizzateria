@@ -57,7 +57,7 @@ function SearchBar({ formClasses, btnClasses, inputClasses }) {
 					setInputVal(e.target.value);
 				}}
 				value={inputVal}
-				className={`${inputType} ${inputClasses} font-semibold text-black  w-full rounded-lg ${aniInput} animate-duration-500 border border-solid border-PINK focus:outline-none`}
+				className={`${inputType} ${inputClasses} font-semibold text-black  w-full rounded-md ${aniInput} animate-duration-500 border border-solid border-PINK focus:outline-none`}
 				placeholder="Search Order # For example: 2938"
 			/>
 			<div className="flex flex-row items-center justify-center gap-4">
@@ -65,7 +65,7 @@ function SearchBar({ formClasses, btnClasses, inputClasses }) {
 					onClick={(e) => handleSubmit(e)}
 					type="submit"
 					disabled={isAnimating}
-					className={`${btnClasses} btn rounded-lg text-white`}>
+					className={`${btnClasses} btn border-RED border border-solid rounded-md text-white`}>
 					Go
 				</button>
 				<button
