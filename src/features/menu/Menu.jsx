@@ -17,7 +17,7 @@ function Menu() {
 	console.log(isLogined);
 
 	useEffect(() => {
-		if (!isLogined) nav("createUser");
+		if (!isLogined) nav("/createUser");
 		ScrollUp();
 	}, [isLogined]);
 
