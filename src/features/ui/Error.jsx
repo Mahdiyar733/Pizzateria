@@ -14,7 +14,7 @@ function NotFound() {
 				- {err.data || err.message}
 			</p>
 			<button
-				className="bg-RED px-5 font-normal py-2 text-white flex justify-center items-start rounded-lg"
+				className="bg-RED px-5 font-normal py-2 text-white flex justify-center items-start rounded-lg sm:hover:bg-PINK transition-colors duration-300"
 				onClick={() => navigate(-1)}>
 				&larr; Go back
 			</button>

@@ -3,42 +3,25 @@ import { Link } from "react-router-dom";
 
 import CartItem, { CartItemModalBox } from "./CartItem";
 import { createContext, useEffect, useState } from "react";
-import { clearList } from "./cartSlice";
+import {
+	clearList,
+	getCart,
+	getCartQuantity,
+	getTotalPrice,
+} from "./cartSlice";
 import EmptyCart from "./EmptyCart";
-import { ScrollUp } from "../utils/helpers";
-
-// const fakeCart = [
-// 	{
-// 		pizzaId: 12,
-// 		name: "Mediterranean",
-// 		quantity: 2,
-// 		unitPrice: 16,
-// 		totalPrice: 32,
-// 	},
-// 	{
-// 		pizzaId: 6,
-// 		name: "Vegetale",
-// 		quantity: 1,
-// 		unitPrice: 13,
-// 		totalPrice: 13,
-// 	},
-// 	{
-// 		pizzaId: 11,
-// 		name: "Spinach and Mushroom",
-// 		quantity: 1,
-// 		unitPrice: 15,
-// 		totalPrice: 15,
-// 	},
-// ];
+import { formatCurrency, ScrollUp } from "../utils/helpers";
 
 export const CartItemContext = createContext();
 
 function Cart() {
 	const [isOpenDetails, setIsOpenDetails] = useState(false);
 	const [currItem, setCurrItem] = useState("");
-	const dis = useDispatch();
 	const username = useSelector((state) => state.user.username);
-	const cart = useSelector((state) => state.cart.cart);
+	const cart = useSelector(getCart);
+	const cartQuantity = useSelector(getCartQuantity);
+	const totalPrice = useSelector(getTotalPrice);
+	const dis = useDispatch();
 
 	function handleClear() {
 		dis(clearList());
@@ -47,7 +30,7 @@ function Cart() {
 
 	useEffect(() => {
 		ScrollUp();
-	}, []);
+	}, [cart]);
 
 	return (
 		<div className="h-[90vh] px-4 py-10 sm:p-20 w-dvw flex justify-center relative">
@@ -82,6 +65,22 @@ function Cart() {
 							</div>
 							<CartItemModalBox item={currItem} />
 						</CartItemContext.Provider>
+						<div className="mb-1 w-full flex flex-row items-center justify-center tracking-normal text-black text-lg font-medium gap-3">
+							<h2 className="animate-fade-up animate-duration-500">
+								Total Price :{" "}
+							</h2>
+							<span className=" tracking-wide text-base  text-RED rounded-md px-2 py-1 animate-fade-down animate-duration-500">
+								{formatCurrency(totalPrice)}
+							</span>
+						</div>
+						<div className="mb-7 w-full flex flex-row items-center justify-center tracking-normal text-black text-lg font-medium gap-3">
+							<h2 className="animate-fade-up animate-duration-500">
+								Number of pizzas:{" "}
+							</h2>
+							<span className=" tracking-wide text-base text-RED rounded-md px-2 py-1 animate-fade-down animate-duration-500">
+								{cartQuantity}
+							</span>
+						</div>
 						<div className="w-full flex flex-row items-center gap-3 px-4 sm:px-16">
 							<Link
 								to="/order/new"

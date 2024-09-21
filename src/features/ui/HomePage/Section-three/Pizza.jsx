@@ -51,6 +51,8 @@ function Pizza({ item, viewAmount = 0 }) {
 	);
 }
 
+// --------------------------------------------- Pizza Cart --------------------------------------------- //
+
 function PizzaCart() {
 	const nav = useNavigate();
 	const username = useSelector((state) => state.user.username);
@@ -153,6 +155,8 @@ function PizzaCart() {
 		</>
 	);
 }
+
+// --------------------------------------------- Laptop Pizza --------------------------------------------- //
 
 function LaptopPizza({ children }) {
 	const { viewAmount, soldOut } = useContext(PizzaContext);

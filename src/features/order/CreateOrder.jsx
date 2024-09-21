@@ -41,52 +41,62 @@ function CreateOrder() {
 	console.log(r);
 
 	return (
-		<div>
-			<h2>Ready to order? Let&apos;s go!</h2>
+		<div className="h-[87dvh] w-full flex justify-center items-center flex-col gap-7 text-black">
+			<h2 className="text-center text-2xl font-medium text-black py-2 px-3 rounded-lg">
+				Ready to order? Let&apos;s go!
+			</h2>
 
-			<Form method="POST">
-				<div>
-					<label>First Name</label>
+			<Form
+				method="POST"
+				className="flex flex-col items-center text-lg bg-RED px-0 py-7 rounded-lg text-RED w-5/6 max-w-[365px]">
+				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
+					<label className="text-white">Name :</label>
 					<input
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="text"
+						spellCheck={false}
+						placeholder="Your first name"
 						name="customer"
 						required
 					/>
 				</div>
-
-				<div>
-					<label>Phone number</label>
-					<div>
-						<input
-							type="tel"
-							name="phone"
-							required
-						/>
-					</div>
-				</div>
-
-				<div>
-					<label>Address</label>
-					<div>
-						<input
-							type="text"
-							name="address"
-							required
-						/>
-					</div>
-				</div>
-
-				<div>
+				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
+					<label className="text-white">Phone :</label>
 					<input
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						type="tel"
+						spellCheck={false}
+						placeholder="Your phone number"
+						name="phone"
+						required
+					/>
+				</div>
+				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
+					<label className="text-white">Address :</label>
+					<input
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 px-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						type="text"
+						spellCheck={false}
+						placeholder="Your address"
+						name="address"
+						required
+					/>
+				</div>
+				<div className="w-full flex flex-row items-center justify-center px-4 sm:px-9 gap-4 rounded-md py-4 mb-2">
+					<label
+						className="text-white text-xs sm:text-sm cursor-pointer"
+						htmlFor="priority">
+						Want to yo give your order priority?
+					</label>
+					<input
+						className="bg-white cursor-pointer"
 						type="checkbox"
 						name="priority"
 						id="priority"
 						// value={withPriority}
 						// onChange={(e) => setWithPriority(e.target.checked)}
 					/>
-					<label htmlFor="priority">Want to yo give your order priority?</label>
 				</div>
-
 				<div>
 					<input
 						type="hidden"
@@ -94,7 +104,7 @@ function CreateOrder() {
 						value={JSON.stringify(cart)}
 					/>
 					<button
-						className="btn btn-success"
+						className="bg-white py-2 px-4 rounded-lg hover:bg-PINK hover:text-white transition-colors duration-300 font-normal"
 						disabled={r?.phone}>
 						{isSubmitting ? "Placing order . . ." : "Order now"}
 					</button>
