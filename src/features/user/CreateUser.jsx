@@ -3,16 +3,29 @@ import { useDispatch, useSelector } from "react-redux";
 import { updateName } from "./userSlice";
 import { useNavigate } from "react-router-dom";
 import { ScrollUp } from "../utils/helpers";
-import { Toaster } from "react-hot-toast";
-import { toastFnc } from "../utils/toast";
+import toast from "react-hot-toast";
 import { clearList } from "../cart/cartSlice";
+import ToasterCustome from "../utils/Toaster";
 
 function CreateUser() {
 	const [username, setUsername] = useState("");
+	const [error, setError] = useState("");
 	const usernameRedux = useSelector((state) => state.user.username);
 	const dis = useDispatch();
 	const nav = useNavigate();
 	const inputRef = useRef();
+
+	function validUsername(username) {
+		const length = username.length;
+		if (username.trim() == "") return;
+		if (length >= 11) {
+			return "Username must be under 11 character.";
+		} else if (length <= 4) {
+			return "Username must be at least 5 character.";
+		} else if (!/^[a-zA-Z0-9]+$/.test(username)) {
+			return "Username can only contain letters and numbers.";
+		}
+	}
 
 	function handleSubmit(e) {
 		e.preventDefault();
@@ -20,9 +33,19 @@ function CreateUser() {
 		nav("/menu");
 	}
 
+	function handleInputChange(e) {
+		setUsername(e.target.value);
+		setError(validUsername(e.target.value));
+	}
+
 	function handleContinuo(e) {
 		e.preventDefault();
 		nav("/menu");
+	}
+
+	function handleGoToOrders(e) {
+		e.preventDefault();
+		nav("/orders");
 	}
 
 	function handleLogout(e) {
@@ -33,7 +56,7 @@ function CreateUser() {
 	}
 
 	function toastLogout() {
-		toastFnc("Successfully Loged out!");
+		toast.success("Successfully Loged out!");
 	}
 
 	useEffect(() => {
@@ -42,7 +65,7 @@ function CreateUser() {
 	}, [usernameRedux]);
 
 	return (
-		<form className="flex flex-col items-center gap-6 h-[90dvh]">
+		<form className="flex flex-col items-center gap-6 h-FullHeight">
 			<div className="background">
 				<span></span>
 				<span></span>
@@ -80,10 +103,7 @@ function CreateUser() {
 					</h2>
 				)}
 				<div>
-					<Toaster
-						position="bottom-left"
-						reverseOrder={false}
-					/>
+					<ToasterCustome />
 				</div>
 				{!usernameRedux && (
 					<input
@@ -91,15 +111,16 @@ function CreateUser() {
 						className="capitalize font-normal tracking-wide bg-white border border-gray-400 border-solid rounded-md px-5 text-black focus:outline-RED focus:outline-2 focus:outline py-2 w-3/4 hover:max-w-md focus:max-w-md transition-all duration-200 min-w-32 max-w-96"
 						value={username}
 						spellCheck="false"
-						onChange={(e) => setUsername(e.target.value)}
+						onChange={handleInputChange}
 						type="text"
 						placeholder="Enter your name"
 					/>
 				)}
 				{!usernameRedux.trim() ? (
-					username.trim() && (
+					username.trim() &&
+					!error && (
 						<button
-							className="px-6 py-2.5 rounded-lg bg-RED border-none animate-fade-down animate-duration-300 text-white hover:bg-PINK transition-colors duration-300"
+							className="px-6 py-2.5 rounded-lg bg-RED border-none animate-fade-right animate-duration-300 text-white sm:hover:bg-PINK transition-colors duration-300"
 							onClick={handleSubmit}>
 							Start ordering
 						</button>
@@ -112,11 +133,21 @@ function CreateUser() {
 							Continuo ordering
 						</button>
 						<button
+							className="px-4 -mt-3 w-48 py-2 rounded-lg hover:bg-PINK hover:border-PINK transition-all duration-300 bg-RED animate-fade-down animate-duration-300 text-white border border-solid border-RED"
+							onClick={handleGoToOrders}>
+							My orders
+						</button>
+						<button
 							className="px-4 -mt-3 py-2 w-48 hover:bg-RED hover:text-white transition-all duration-300 rounded-lg bg-transparent border-RED border-solid border animate-fade-up animate-duration-300 text-RED"
 							onClick={handleLogout}>
 							Logout
 						</button>
 					</>
+				)}
+				{error && (
+					<p className="text-RED text-opacity-80 animate-fade-up animate-duration-500 from-neutral-content">
+						{error}
+					</p>
 				)}
 			</div>
 		</form>

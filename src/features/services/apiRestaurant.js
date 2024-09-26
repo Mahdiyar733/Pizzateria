@@ -30,11 +30,16 @@ export async function createOrder(newOrder) {
 				"Content-Type": "application/json",
 			},
 		});
+		console.log("res", res);
 
 		if (!res.ok) throw Error();
 		const { data } = await res.json();
+		console.log("data", data);
+
 		return data;
-	} catch {
+	} catch (err) {
+		console.log("err", err);
+
 		throw Error("Failed creating your order");
 	}
 }

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { openIngredients } from "../../../utils/ModalBoxSlice";
 import { addItem } from "../../../cart/cartSlice";
 import { useNavigate } from "react-router-dom";
-import { toastFnc } from "../../../utils/toast";
+import toast from "react-hot-toast";
 
 const PizzaContext = createContext();
 
@@ -71,14 +71,18 @@ function PizzaCart() {
 	} = useContext(PizzaContext);
 
 	function toastAdd() {
-		toastFnc(`${item.name} Added to cart`);
+		toast.success(`${item.name} Added to cart`);
 	}
 
 	function handleAddToCart(item) {
+		console.log("item,", item);
+
 		if (username) {
 			const newItem = {
-				...item,
+				pizzaId: item.id,
+				name: item.name,
 				quantity: 1,
+				unitPrice: item.unitPrice,
 			};
 			toastAdd();
 			dis(addItem(newItem));
@@ -88,7 +92,7 @@ function PizzaCart() {
 	}
 
 	useEffect(() => {
-		const isDuplicated = cart.find((cartItem) => cartItem.id === item.id);
+		const isDuplicated = cart.find((cartItem) => cartItem.pizzaId === item.id);
 		if (isDuplicated) setIsAdded(true);
 	}, [cart, item]);
 
@@ -124,7 +128,7 @@ function PizzaCart() {
 				</span>
 				<button
 					onClick={() => dis(openIngredients(item))}
-					className="border border-solid border-RED rounded-lg hover:bg-RED hover:text-white transition-colors duration-300  text-RED py-1.5 px-8 mt-2">
+					className="border border-solid border-RED rounded-lg sm:hover:bg-RED sm:hover:text-white transition-colors duration-300  text-RED py-1.5 px-8 mt-2">
 					ingredients
 				</button>
 			</div>
@@ -132,13 +136,13 @@ function PizzaCart() {
 				!isAdded ? (
 					<button
 						title="For Adding"
-						className="border border-solid border-RED rounded-lg hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
+						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
 						onClick={() => handleAddToCart(item)}>
 						Add to cart
 					</button>
 				) : (
 					<button
-						className="border border-solid border-RED rounded-lg hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-9 mb-5"
+						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-9 mb-5"
 						title="For Quantity"
 						onClick={() => nav("/cart")}>
 						Go to cart

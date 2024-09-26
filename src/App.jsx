@@ -12,7 +12,7 @@ import Reserve from "./features/ui/ReservePage/Reserve";
 import InfoChef from "./features/ui/InfoChef";
 import PageNotFound from "./features/ui/PageNotFound";
 import CreateUser from "./features/user/CreateUser";
-import { SpeedInsights } from "@vercel/speed-insights/react";
+import Orders from "./features/ui/Orders";
 
 const router = createBrowserRouter([
 	{
@@ -32,6 +32,7 @@ const router = createBrowserRouter([
 			{ path: "/reservation", element: <Reserve /> },
 			{ path: "/chef/:chefId", element: <InfoChef /> },
 			{ path: "/createUser", element: <CreateUser /> },
+			{ path: "/orders", element: <Orders /> },
 			{ path: "*", element: <PageNotFound /> },
 		],
 	},
@@ -41,7 +42,6 @@ function App() {
 	return (
 		<>
 			<RouterProvider router={router} />
-			<SpeedInsights />;
 		</>
 	);
 }

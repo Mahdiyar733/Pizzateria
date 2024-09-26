@@ -7,12 +7,14 @@ import { useEffect } from "react";
 import { ScrollUp } from "../utils/helpers";
 import { useSelector } from "react-redux";
 import IngredientsModal from "./IngredientsModal";
-import { Toaster } from "react-hot-toast";
+import ToasterCustome from "../utils/Toaster";
 
 function Menu() {
 	const menu = useLoaderData();
 	const username = useSelector((state) => state.user.username);
 	const nav = useNavigate();
+
+	console.log("menu:", menu);
 
 	useEffect(() => {
 		if (!username) nav("/createUser");
@@ -24,10 +26,7 @@ function Menu() {
 	return (
 		<div className={`h-auto py-10 flex items-center flex-col`}>
 			<div>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={true}
-				/>
+				<ToasterCustome />
 			</div>
 			<motion.div
 				initial={{ opacity: 0, y: -50 }}

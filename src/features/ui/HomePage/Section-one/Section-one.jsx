@@ -13,8 +13,8 @@ function SectionOne() {
 	return (
 		<div
 			style={{ backgroundImage: `url(${PizzaPic})` }}
-			className={`bg-cover bg-right h-[500px] lg:h-[600px]`}>
-			<div className="backdrop-brightness-75 h-full w-full flex justify-evenly items-center flex-col py-16 sm:py-12">
+			className={`bg-cover bg-right h-[500px] lg:h-FullHeight`}>
+			<div className="backdrop-brightness-75 h-full w-full flex justify-evenly items-center flex-col py-16 sm:py-12 lg:py-40">
 				<span
 					role="badge"
 					className="py-2 px-4 bg-PINK text-RED rounded-full text-xs font-semibold flex flex-row items-center gap-1">
@@ -64,7 +64,7 @@ function SectionOne() {
 				<Link to="/menu">
 					<button
 						type="button"
-						className="rounded-full uppercase bg-RED animate-fade-up hover:bg-PINK transition-all duration-100 hover:text-black text-white text-xs font-normal border-none py-3 tracking-wide px-5 md:text-base md:px-7 cursor-pointer">
+						className="rounded-full md:hover:px-9 uppercase bg-RED animate-fade-up hover:bg-PINK transition-all duration-300 hover:text-black text-white text-xs font-normal border-none py-3 tracking-wide px-5 md:text-base md:px-7 cursor-pointer">
 						Order Quickly
 					</button>
 				</Link>

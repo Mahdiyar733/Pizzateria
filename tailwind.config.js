@@ -5,6 +5,9 @@ export default {
 
 	theme: {
 		extend: {
+			height: {
+				FullHeight: "90.3730445247vh",
+			},
 			screens: {
 				base: "926px",
 			},

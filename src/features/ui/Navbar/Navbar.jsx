@@ -135,7 +135,7 @@ function ModalBox() {
 					<SearchBar
 						inputClasses="input-md bg-PINK bg-opacity-40 text-lg"
 						formClasses="flex-col gap-3"
-						btnClasses="px-7 btn-md btn-success hover:brightness-125 hover:px-[14.5rem] transition-all duration-300"
+						btnClasses="px-10 hover:border-PINK bg-RED text-white py-2.5 rounded-lg hover:bg-PINK border-RED border-solid border transition-all duration-300"
 					/>
 				</div>
 			</motion.div>

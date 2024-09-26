@@ -65,11 +65,11 @@ function SearchBar({ formClasses, btnClasses, inputClasses }) {
 					onClick={(e) => handleSubmit(e)}
 					type="submit"
 					disabled={isAnimating}
-					className={`${btnClasses} btn border-RED border border-solid rounded-md text-white`}>
+					className={`${btnClasses}`}>
 					Go
 				</button>
 				<button
-					className="btn btn-md md:block hidden btn-outline btn-error"
+					className="text-RED border-RED border border-solid px-5 py-2.5 rounded-lg hover:bg-RED hover:text-white transition-colors duration-300 md:block hidden "
 					onClick={(e) => {
 						e.preventDefault();
 						handleCloseModalBox();

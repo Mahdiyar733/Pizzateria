@@ -2,7 +2,7 @@
 function SearchBtn({ classes, children, handler }) {
 	return (
 		<button
-			className={`${classes} btn btn-ghost flex flex-row items-center`}
+			className={`${classes} flex flex-row items-center`}
 			onClick={handler}>
 			{children}
 		</button>

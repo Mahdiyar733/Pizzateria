@@ -13,7 +13,9 @@ import { decrease, deleteItem, increase } from "./cartSlice";
 
 function CartItem({ item }) {
 	const { setIsOpenDetails, setCurrItem } = useContext(CartItemContext);
-	const { id, name, quantity } = item;
+	const { pizzaId, name, quantity } = item;
+	console.log("itemmmm", item);
+
 	const dis = useDispatch();
 
 	function handleInfo() {
@@ -22,22 +24,22 @@ function CartItem({ item }) {
 	}
 
 	function handleDelete() {
-		dis(deleteItem(id));
+		dis(deleteItem(pizzaId));
 	}
 
 	function handleIncrease() {
-		dis(increase(id));
+		dis(increase(pizzaId));
 	}
 
 	function handleDecrease() {
-		dis(decrease(id));
+		dis(decrease(pizzaId));
 	}
 
 	return (
 		<div className="flex flex-row items-center w-full bg-PINK p-3 rounded-lg text-xs text-black justify-between animate-fade-left animate-duration-500">
 			<div className="flex flex-row items-center gap-1 sm:gap-2">
 				<span
-					id={id}
+					id={pizzaId}
 					className="bg-pink-100 rounded-md p-1 hover:bg-blue-400 cursor-pointer transition-colors duration-300"
 					onClick={handleInfo}>
 					<InfoSvg />

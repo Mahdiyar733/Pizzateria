@@ -23,6 +23,8 @@ function Cart() {
 	const totalPrice = useSelector(getTotalPrice);
 	const dis = useDispatch();
 
+	console.log("cart", cart);
+
 	function handleClear() {
 		dis(clearList());
 		ScrollUp();
@@ -33,7 +35,7 @@ function Cart() {
 	}, [cart]);
 
 	return (
-		<div className="h-[90vh] px-4 py-10 sm:p-20  flex justify-center relative overflow-x-hidden">
+		<div className="h-dvh px-4 py-10 sm:p-20  flex justify-center relative overflow-x-hidden">
 			<div className="max-w-[389px] sm:max-w-[665px] w-full">
 				<Link to="/menu">
 					<button className="bg-RED px-3 py-1 rounded-lg text-white mb-4 sm:mb-5 sm:py-2 hover:bg-PINK transition-colors duration-300 animate-fade-right animate-duration-500">
@@ -53,11 +55,11 @@ function Cart() {
 								setCurrItem,
 								currItem,
 							}}>
-							<div className="flex flex-col items-center gap-3 mb-7 max-h-96 overflow-scroll pr-4">
+							<div className="flex flex-col items-center gap-3 mb-7 max-h-96 overflow-auto pr-4">
 								{cart.map((item) => {
 									return (
 										<CartItem
-											key={item.id}
+											key={item.pizzaId}
 											item={item}
 										/>
 									);

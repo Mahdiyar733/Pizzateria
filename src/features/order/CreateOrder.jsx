@@ -1,59 +1,81 @@
-import { Form, redirect, useActionData, useNavigation } from "react-router-dom";
+/* eslint-disable react/prop-types */
+import {
+	Form,
+	redirect,
+	useActionData,
+	useNavigate,
+	useNavigation,
+} from "react-router-dom";
 import { createOrder } from "../services/apiRestaurant";
+import { useEffect, useState } from "react";
+import { addOrder, getCart, getTotalPrice } from "../cart/cartSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { formatCurrency, ScrollUp } from "../utils/helpers";
+import store from "../../store";
+import { clearAddress, fetchAddress } from "../user/userSlice";
+import toast from "react-hot-toast";
+import ToasterCustome from "../utils/Toaster";
+import { AnimatePresence, motion } from "framer-motion";
 
 // https://uibakery.io/regex-library/phone-number
-const isValidPhone = (str) =>
-	/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
-		str,
-	);
-
-const fakeCart = [
-	{
-		pizzaId: 12,
-		name: "Mediterranean",
-		quantity: 2,
-		unitPrice: 16,
-		totalPrice: 32,
-	},
-	{
-		pizzaId: 6,
-		name: "Vegetale",
-		quantity: 1,
-		unitPrice: 13,
-		totalPrice: 13,
-	},
-	{
-		pizzaId: 11,
-		name: "Spinach and Mushroom",
-		quantity: 1,
-		unitPrice: 15,
-		totalPrice: 15,
-	},
-];
+// const isValidPhone = (str) =>
+// 	/^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
+// 		str,
+// 	);
 
 function CreateOrder() {
-	// const [withPriority, setWithPriority] = useState(false);
-	const cart = fakeCart;
+	const [withPriority, setWithPriority] = useState(false);
 	const navigation = useNavigation();
 	const isSubmitting = navigation.state === "submitting";
-
+	const {
+		username,
+		status: addressStatus,
+		position,
+		address,
+		error,
+	} = useSelector((state) => state.user);
+	const cart = useSelector(getCart);
+	const totalPrice = useSelector(getTotalPrice);
+	const nav = useNavigate();
+	const dis = useDispatch();
 	const r = useActionData();
-	console.log(r);
+	const isLoadingAddress = addressStatus === "loading";
+	const [addressState, setAddressState] = useState("");
+
+	function handleAddress(e) {
+		e.preventDefault();
+		toast.promise(dis(fetchAddress()), {
+			loading: "Getting address...",
+			success: "Location got successfuly!",
+			error: "Something went wrong :(",
+		});
+	}
+
+	useEffect(() => {
+		dis(clearAddress());
+		if (address) setAddressState(address);
+	}, [address, dis]);
+
+	useEffect(() => {
+		if (cart.length == 0) nav("/menu");
+		ScrollUp();
+	}, [cart, nav]);
 
 	return (
-		<div className="h-[87dvh] w-full flex justify-center items-center flex-col gap-7 text-black">
-			<h2 className="text-center text-2xl font-medium text-black py-2 px-3 rounded-lg">
+		<div className="h-FullHeight w-full flex px-5 py-10 sm:p-20 items-center flex-col gap-7 text-black">
+			<ToasterCustome />
+			<h2 className="text-center text-2xl font-medium text-black py-2 px-3 rounded-lg animate-fade-down animate-duration-500">
 				Ready to order? Let&apos;s go!
 			</h2>
-
 			<Form
 				method="POST"
-				className="flex flex-col items-center text-lg bg-RED px-0 py-7 rounded-lg text-RED w-5/6 max-w-[365px]">
+				className={`flex flex-col items-center text-lg bg-RED px-0 py-7 rounded-lg text-RED w-full max-w-[365px] animate-fade-up animate-duration-500 transition-all duration-500 md:max-w-[500px] md:px-5 md:py-10`}>
 				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
 					<label className="text-white">Name :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="text"
+						defaultValue={username}
 						spellCheck={false}
 						placeholder="Your first name"
 						name="customer"
@@ -63,7 +85,7 @@ function CreateOrder() {
 				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
 					<label className="text-white">Phone :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="tel"
 						spellCheck={false}
 						placeholder="Your phone number"
@@ -71,11 +93,14 @@ function CreateOrder() {
 						required
 					/>
 				</div>
-				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
+				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2 relative">
 					<label className="text-white">Address :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 px-2 text-sm w-40 sm:w-48 sm:hover:bg-PINK focus:w-44 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 px-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="text"
+						value={addressState}
+						onChange={(e) => setAddressState(e.target.value)}
+						disabled={isLoadingAddress}
 						spellCheck={false}
 						placeholder="Your address"
 						name="address"
@@ -93,27 +118,65 @@ function CreateOrder() {
 						type="checkbox"
 						name="priority"
 						id="priority"
-						// value={withPriority}
-						// onChange={(e) => setWithPriority(e.target.checked)}
+						value={withPriority}
+						onChange={(e) => setWithPriority(e.target.checked)}
 					/>
 				</div>
-				<div>
+				<div className="flex flex-col items-center gap-3">
+					{/* ------------- hidden input for data in our Form ------------- */}
 					<input
 						type="hidden"
 						name="cart"
 						value={JSON.stringify(cart)}
 					/>
+					<input
+						type="hidden"
+						name="position"
+						value={
+							position.longitude && position.latitude
+								? `${position.latitude}, ${position.longitude}`
+								: ""
+						}
+					/>
+					{/* -------------------------------------------------------------- */}
 					<button
-						className="bg-white py-2 px-4 rounded-lg hover:bg-PINK hover:text-white transition-colors duration-300 font-normal"
-						disabled={r?.phone}>
-						{isSubmitting ? "Placing order . . ." : "Order now"}
+						className="bg-white py-2 px-4 rounded-lg hover:bg-PINK hover:text-white transition-colors duration-300 font-normal disabled:cursor-not-allowed"
+						disabled={r?.phone || isLoadingAddress}>
+						{isSubmitting
+							? "Placing order . . ."
+							: `Order now from ${formatCurrency(totalPrice)}`}
 					</button>
+					<GetAddressBtn
+						isVisible={!addressState.trim()}
+						handler={handleAddress}>
+						{isLoadingAddress ? "Loading..." : "Get Address"}
+					</GetAddressBtn>
 				</div>
 			</Form>
 		</div>
 	);
 }
 
+function GetAddressBtn({ handler, isVisible, children }) {
+	return (
+		<AnimatePresence>
+			{isVisible && (
+				<motion.button
+					className="bg-yellow-300 w-full text-white py-1.5 px-4 rounded-lg hover:bg-PINK hover:text-white transition-colors duration-300 font-normal disabled:cursor-not-allowed"
+					initial={{ opacity: 0, scale: 0.7 }}
+					animate={{ opacity: 1, scale: 1 }}
+					exit={{ opacity: 0, scale: 0.8 }}
+					transition={{ type: "just" }}
+					style={{ zIndex: 100 }}
+					onClick={handler}>
+					{children}
+				</motion.button>
+			)}
+		</AnimatePresence>
+	);
+}
+
+// eslint-disable-next-line react-refresh/only-export-components
 export async function action({ request }) {
 	const formData = await request.formData();
 	const data = Object.fromEntries(formData);
@@ -121,16 +184,15 @@ export async function action({ request }) {
 	const order = {
 		...data,
 		cart: JSON.parse(data.cart),
-		priority: data.priority === "on",
+		priority: data.priority === "true",
 	};
 
-	console.log(order);
-
-	const errors = {};
-	if (isValidPhone(order.phone) == false) errors.phone = "Not valid";
-	if (Object.keys(errors).length > 0) return errors;
+	// const errors = {};
+	// if (isValidPhone(order.phone) == false) errors.phone = "Not valid";
+	// if (Object.keys(errors).length > 0) return errors;
 
 	const newOrder = await createOrder(order);
+	store.dispatch(addOrder(newOrder));
 
 	return redirect(`/order/${newOrder.id}`);
 }
