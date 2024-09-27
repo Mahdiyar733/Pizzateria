@@ -30,7 +30,7 @@ function Order() {
 	return (
 		<div
 			key={id}
-			className="h-FullHeight p-10 sm:p-20 flex flex-col items-center justify-center bg-white bg-opacity-50">
+			className="h-FullHeight p-10 sm:p-20 flex flex-col items-center justify-start bg-white bg-opacity-50">
 			<div className="max-w-[458px] md:max-w-[520px] flex flex-col items-center justify-center gap-6 w-full">
 				<div className="flex flex-col w-full md:flex-row items-center gap-3">
 					<h2 className="flex flex-row items-center gap-3 text-2xl text-white bg-RED bg-opacity-85 justify-center font-normal py-2 rounded-lg w-full md:py-4 animate-fade-right animate-duration-500 animate-delay-100">

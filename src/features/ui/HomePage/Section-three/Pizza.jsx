@@ -136,13 +136,13 @@ function PizzaCart() {
 				!isAdded ? (
 					<button
 						title="For Adding"
-						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
+						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK sm:hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-8 mb-5"
 						onClick={() => handleAddToCart(item)}>
 						Add to cart
 					</button>
 				) : (
 					<button
-						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-9 mb-5"
+						className="border border-solid border-RED rounded-lg sm:hover:bg-PINK sm:hover:border-PINK transition-colors duration-300 bg-RED text-white py-1.5 px-9 mb-5"
 						title="For Quantity"
 						onClick={() => nav("/cart")}>
 						Go to cart

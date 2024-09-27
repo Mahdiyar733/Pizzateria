@@ -37,7 +37,7 @@ function SectionThree() {
 				</MotionDiv>
 				<MotionDiv type="1">
 					<Link to="/menu">
-						<button className="btn flex flex-row items-center gap-1 text-white rounded-full btn-sm sm:btn-md bg-RED border-none hover:bg-PINK transition-all duration-300 font-normal">
+						<button className="btn flex flex-row items-center gap-1 text-white rounded-full btn-sm sm:btn-md bg-RED border-none sm:hover:bg-PINK transition-all duration-300 font-normal">
 							Go to Menu <ArrowRightSvg />
 						</button>
 					</Link>

@@ -64,7 +64,7 @@ function SectionOne() {
 				<Link to="/menu">
 					<button
 						type="button"
-						className="rounded-full md:hover:px-9 uppercase bg-RED animate-fade-up hover:bg-PINK transition-all duration-300 hover:text-black text-white text-xs font-normal border-none py-3 tracking-wide px-5 md:text-base md:px-7 cursor-pointer">
+						className="rounded-full md:hover:px-9 uppercase bg-RED animate-fade-up sm:hover:bg-PINK transition-all duration-300 hover:text-black text-white text-xs font-normal border-none py-3 tracking-wide px-5 md:text-base md:px-7 cursor-pointer">
 						Order Quickly
 					</button>
 				</Link>

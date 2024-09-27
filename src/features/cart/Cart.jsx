@@ -38,7 +38,7 @@ function Cart() {
 		<div className="h-dvh px-4 py-10 sm:p-20  flex justify-center relative overflow-x-hidden bg-white bg-opacity-50">
 			<div className="max-w-[389px] sm:max-w-[665px] w-full">
 				<Link to="/menu">
-					<button className="bg-RED px-3 py-1 rounded-lg text-white mb-4 sm:mb-5 sm:py-2 hover:bg-PINK transition-colors duration-300 animate-fade-right animate-duration-500">
+					<button className="bg-RED px-3 py-1 rounded-lg text-white mb-4 sm:mb-5 sm:py-2 sm:hover:bg-PINK transition-colors duration-300 animate-fade-right animate-duration-500">
 						&larr; Back to menu
 					</button>
 				</Link>
@@ -86,11 +86,11 @@ function Cart() {
 						<div className="w-full flex flex-row items-center gap-3 px-4 sm:px-16">
 							<Link
 								to="/order/new"
-								className="bg-RED hover:bg-PINK hover:border-PINK transition-all duration-300 px-4 py-2 rounded-lg text-white flex-1 flex items-center justify-center border border-solid border-RED text-nowrap hover:flex-[2] md:py-3 md:text-lg animate-fade-right animate-duration-500">
+								className="bg-RED sm:hover:bg-PINK sm:hover:border-PINK transition-all duration-300 px-4 py-2 rounded-lg text-white flex-1 flex items-center justify-center border border-solid border-RED text-nowrap sm:hover:flex-[2] md:py-3 md:text-lg animate-fade-right animate-duration-500">
 								Order pizzas
 							</Link>
 							<button
-								className="bg-transparent transition-all duration-300 hover:bg-RED hover:text-white hover:flex-[2] md:py-3 md:text-lg border border-solid border-RED text-nowrap px-4 py-2 rounded-lg text-RED flex-1 flex items-center justify-center animate-fade-left animate-duration-500"
+								className="bg-transparent transition-all duration-300 sm:hover:bg-RED sm:hover:text-white sm:hover:flex-[2] md:py-3 md:text-lg border border-solid border-RED text-nowrap px-4 py-2 rounded-lg text-RED flex-1 flex items-center justify-center animate-fade-left animate-duration-500"
 								onClick={handleClear}>
 								Clear cart
 							</button>

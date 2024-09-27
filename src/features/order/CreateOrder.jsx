@@ -59,17 +59,17 @@ function CreateOrder() {
 	}, [cart, nav]);
 
 	return (
-		<div className="h-auto sm:h-FullHeight w-full flex px-5 py-10 sm:p-20 items-center flex-col gap-7 text-black bg-white bg-opacity-50">
+		<div className="h-auto min-h-dvh sm:h-FullHeight w-full flex px-5 py-10 sm:p-20 items-center flex-col gap-7 text-black bg-white bg-opacity-50">
 			<h2 className="text-center text-2xl font-medium text-black py-2 px-3 rounded-lg animate-fade-down animate-duration-500">
 				Ready to order? Let&apos;s go!
 			</h2>
 			<Form
 				method="POST"
 				className={`flex flex-col items-center text-lg bg-RED px-0 py-7 rounded-lg text-RED w-full max-w-[365px] animate-fade-up animate-duration-500 transition-all duration-500 md:max-w-[500px] md:px-5 md:py-10`}>
-				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
-					<label className="text-white">Name :</label>
+				<div className="w-full flex flex-row items-center justify-between px-9 gap-4 rounded-md py-2">
+					<label className="text-white text-nowrap">Name :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-full sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="text"
 						defaultValue={username}
 						spellCheck={false}
@@ -78,10 +78,10 @@ function CreateOrder() {
 						required
 					/>
 				</div>
-				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2">
-					<label className="text-white">Phone :</label>
+				<div className="w-full flex flex-row items-center justify-between px-9 gap-4 rounded-md py-2">
+					<label className="text-white text-nowrap">Phone :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 pl-2 text-sm w-full sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="tel"
 						spellCheck={false}
 						placeholder="Your phone number"
@@ -89,10 +89,10 @@ function CreateOrder() {
 						required
 					/>
 				</div>
-				<div className="w-full flex flex-row items-center justify-between px-4 sm:px-9 gap-4 rounded-md py-2 relative">
-					<label className="text-white">Address :</label>
+				<div className="w-full flex flex-row items-center justify-between px-9 gap-4 rounded-md py-2 relative">
+					<label className="text-white text-nowrap">Address :</label>
 					<input
-						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 px-2 text-sm w-40 sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
+						className="bg-white border text-black border-solid border-RED rounded-md  py-1.5 px-2 text-sm w-full sm:w-48 md:w-72 sm:hover:bg-PINK focus:w-44 md:focus:w-60 transition-all duration-300 capitalize focus:outline-none focus:border-black"
 						type="text"
 						value={addressState}
 						onChange={(e) => setAddressState(e.target.value)}
@@ -103,7 +103,7 @@ function CreateOrder() {
 						required
 					/>
 				</div>
-				<div className="w-full flex flex-row items-center justify-center px-4 sm:px-9 gap-4 rounded-md py-4 mb-2">
+				<div className="w-full flex flex-row items-center justify-center px-9 gap-4 rounded-md py-4 mb-2">
 					<label
 						className="text-white text-xs sm:text-sm cursor-pointer"
 						htmlFor="priority">

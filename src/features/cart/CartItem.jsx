@@ -40,7 +40,7 @@ function CartItem({ item }) {
 			<div className="flex flex-row items-center gap-1 sm:gap-2">
 				<span
 					id={pizzaId}
-					className="bg-pink-100 rounded-md p-1 hover:bg-blue-400 cursor-pointer transition-colors duration-300"
+					className="bg-pink-100 rounded-md p-1 sm:hover:bg-blue-400 cursor-pointer transition-colors duration-300"
 					onClick={handleInfo}>
 					<InfoSvg />
 				</span>
@@ -48,18 +48,18 @@ function CartItem({ item }) {
 			</div>
 			<div className="flex flex-row items-center gap-2 sm:gap-4">
 				<button
-					className="bg-pink-100 rounded-md p-1 hover:bg-RED cursor-pointer transition-colors duration-300"
+					className="bg-pink-100 rounded-md p-1 sm:hover:bg-RED cursor-pointer transition-colors duration-300"
 					onClick={handleDelete}>
 					<DeleteSvg />
 				</button>
 				<button
-					className="bg-pink-100 rounded-md p-1 hover:bg-RED cursor-pointer transition-colors duration-300"
+					className="bg-pink-100 rounded-md p-1 sm:hover:bg-RED cursor-pointer transition-colors duration-300"
 					onClick={handleDecrease}>
 					<DecreaseSvg />
 				</button>
 				<span className="sm:text-base">{quantity}</span>
 				<button
-					className="bg-pink-100 rounded-md p-1 hover:bg-RED cursor-pointer transition-colors duration-300"
+					className="bg-pink-100 rounded-md p-1 sm:hover:bg-RED cursor-pointer transition-colors duration-300"
 					onClick={handleIncrease}>
 					<IncreaseSvg />
 				</button>
