@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { calcMinutesLeft } from "../utils/helpers";
+import { calcMinutesLeft, formatCurrency } from "../utils/helpers";
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
@@ -40,25 +40,28 @@ function OrderItem({ order }) {
 				<span>{phone}</span>
 			</Item>
 			<Item>
-				<span>Order Price : </span>
-				<span>{orderPrice}</span>
-			</Item>
-			{priority && (
-				<Item>
-					<span>Priority Price : </span>
-					<span>{priorityPrice}</span>
-				</Item>
-			)}
-			<Item>
 				<span>Priority : </span>
 				<span>{priority ? "Yes" : "No"}</span>
 			</Item>
-			{status == "preparing" && (
-				<Item>
-					<span>Delivery times left : </span>
+			<Item>
+				<span>Priority Price : </span>
+				<span>
+					{priority ? formatCurrency(priorityPrice) : formatCurrency(0)}
+				</span>
+			</Item>
+			<Item>
+				<span>Order Price : </span>
+				<span>{formatCurrency(orderPrice)}</span>
+			</Item>
+			<Item>
+				<span>Delivery times left : </span>
+				{status == "preparing" && deliveryTime > 0 ? (
 					<span>{deliveryTime} minutes</span>
-				</Item>
-			)}
+				) : (
+					<span>Delivered ! </span>
+				)}
+			</Item>
+
 			<button
 				className="w-full py-2 text-white border border-solid border-white mt-2 rounded-md hover:bg-white font-medium hover:border-PINK tracking-wider hover:text-black transition-all duration-300"
 				onClick={handleDetails}>

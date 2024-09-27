@@ -103,7 +103,7 @@ function PizzaCart() {
 				alt={name}
 				className="hidden"
 				onLoad={() => setIsLoading(false)}
-				onError={() => setIsLoading(false)} // Handle error case
+				onError={() => setIsLoading(false)}
 			/>
 
 			{!isLoading ? (

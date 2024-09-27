@@ -21,11 +21,11 @@ export default {
 			boxShadow: { shdw: "4px 4px 10px rgb(0,0,0,0.25)" },
 		},
 		animation: {
-			"slide-in-right": "slide-in-right 0.3s ease-out ",
+			"slide-in-right": "slide-in-right 0.3s ease-in ",
 		},
 		keyframes: {
 			"slide-in-right": {
-				"0%": { transform: "translateX(100%)", opacity: 0 },
+				"0%": { transform: "translateX(100%)", opacity: 0.8 },
 				"100%": { transform: "translateX(0)", opacity: 1 },
 			},
 		},

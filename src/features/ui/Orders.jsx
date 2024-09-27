@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import OrderItem from "../order/OrderItem";
 import { useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { ScrollUp } from "../utils/helpers";
 
 function Orders() {
 	const username = useSelector((state) => state.user.username);
@@ -11,10 +12,11 @@ function Orders() {
 
 	useEffect(() => {
 		if (!username.trim()) nav("/createUser");
+		ScrollUp();
 	}, [username, nav]);
 
 	return (
-		<div className="h-auto min-h-dvh sm:min-h-dvh flex items-center flex-col py-10 sm:p-20 md:px-10 ">
+		<div className="h-auto min-h-dvh sm:min-h-dvh flex items-center flex-col py-10 sm:p-20 md:px-10 bg-white bg-opacity-50">
 			{orders.length ? (
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 w-full px-7 py-4 gap-4 sm:gap-9 lg:max-w-[1200px] xl:grid-cols-4 xl:px-3 xl:max-w-full sm:max-w-[832px]">
 					{orders.map((order) => (

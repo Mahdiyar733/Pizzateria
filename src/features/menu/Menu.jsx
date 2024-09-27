@@ -7,7 +7,6 @@ import { useEffect } from "react";
 import { ScrollUp } from "../utils/helpers";
 import { useSelector } from "react-redux";
 import IngredientsModal from "./IngredientsModal";
-import ToasterCustome from "../utils/Toaster";
 
 function Menu() {
 	const menu = useLoaderData();
@@ -24,10 +23,8 @@ function Menu() {
 	if (!username.trim()) return null;
 
 	return (
-		<div className={`h-auto py-10 flex items-center flex-col`}>
-			<div>
-				<ToasterCustome />
-			</div>
+		<div
+			className={`h-auto py-10 flex items-center flex-col  bg-white bg-opacity-50`}>
 			<motion.div
 				initial={{ opacity: 0, y: -50 }}
 				animate={{ opacity: 1, y: 0 }}
@@ -41,7 +38,7 @@ function Menu() {
 				/>
 			</motion.div>
 			<IngredientsModal />
-			<main className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-6 xl:grid-cols-4 xl:grid-rows-5 xl:max-w-screen-2xl sm:grid-rows-9 grid-rows-12 px-10 gap-5 place-items-center sm:max-w-[663px] lg:max-w-[950px]">
+			<main className="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 lg:grid-rows-6 xl:grid-cols-4 xl:grid-rows-5 xl:max-w-screen-2xl sm:grid-rows-9 grid-rows-12 px-10 gap-5 place-items-center sm:max-w-[663px] lg:max-w-[950px] ">
 				{menu.map((item) => (
 					<Pizza
 						viewAmount={0.1}

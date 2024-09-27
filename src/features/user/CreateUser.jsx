@@ -65,7 +65,9 @@ function CreateUser() {
 	}, [usernameRedux]);
 
 	return (
-		<form className="flex flex-col items-center gap-6 h-FullHeight">
+		<form
+			className="flex flex-col items-center gap-6 h-FullHeight"
+			onSubmit={(e) => e.preventDefault()}>
 			<div className="background">
 				<span></span>
 				<span></span>

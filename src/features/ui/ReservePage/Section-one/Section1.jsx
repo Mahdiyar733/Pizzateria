@@ -11,6 +11,7 @@ export const ReserveContext = createContext();
 
 function Section1() {
 	const [errors, setErrors] = useState({});
+	const [imgIsLoading, setImgIsLoading] = useState(true);
 	const [formData, setFormData] = useState({
 		name: "",
 		phone: "",
@@ -40,9 +41,19 @@ function Section1() {
 						<ReserveForm />
 					</MotionDiv>
 					<img
-						className="hidden md:block object-cover h-80 base:-mt-20 animate-fade-left animate-duration-700"
+						className="hidden"
+						onLoad={() => setImgIsLoading(false)}
+						onError={() => setImgIsLoading(false)}
 						src={TablePic}
 					/>
+					{!imgIsLoading ? (
+						<img
+							className="hidden md:block object-cover h-80 base:-mt-20 animate-fade-left animate-duration-700"
+							src={TablePic}
+						/>
+					) : (
+						<div className="h-80 base:-mt-20 animate-fade-left animate-duration-700 skeleton w-80 bg-gray-500"></div>
+					)}
 				</div>
 				<ReserveModalBox />
 			</div>

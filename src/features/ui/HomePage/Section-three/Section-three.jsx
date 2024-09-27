@@ -4,7 +4,6 @@ import MotionDiv from "../../../utils/MotionDiv";
 import MenuHeader from "./MenuHeader";
 import { Link, useLoaderData } from "react-router-dom";
 import IngredientsModal from "../../../menu/IngredientsModal";
-import { Toaster } from "react-hot-toast";
 
 function SectionThree() {
 	const menu = useLoaderData();
@@ -18,12 +17,7 @@ function SectionThree() {
 			<MotionDiv>
 				<MenuHeader />
 			</MotionDiv>
-			<div>
-				<Toaster
-					position="bottom-left"
-					reverseOrder={true}
-				/>
-			</div>
+
 			<div className="flex flex-col items-center gap-7 sm:gap-9 sm:flex-row justify-evenly">
 				<MotionDiv type="3">
 					<div

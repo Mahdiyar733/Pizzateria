@@ -3,6 +3,7 @@ import { Outlet } from "react-router-dom";
 import SpinnerFullpage from "./Spinner";
 import { useNavigation } from "react-router-dom";
 import Navbar from "./Navbar/Navbar";
+import ToasterCustome from "../utils/Toaster";
 
 function AppLayout() {
 	const navigation = useNavigation();
@@ -20,6 +21,7 @@ function AppLayout() {
 				<Outlet />
 			</main>
 			<Footer />
+			<ToasterCustome />
 		</div>
 	);
 }

@@ -35,7 +35,7 @@ function Cart() {
 	}, [cart]);
 
 	return (
-		<div className="h-dvh px-4 py-10 sm:p-20  flex justify-center relative overflow-x-hidden">
+		<div className="h-dvh px-4 py-10 sm:p-20  flex justify-center relative overflow-x-hidden bg-white bg-opacity-50">
 			<div className="max-w-[389px] sm:max-w-[665px] w-full">
 				<Link to="/menu">
 					<button className="bg-RED px-3 py-1 rounded-lg text-white mb-4 sm:mb-5 sm:py-2 hover:bg-PINK transition-colors duration-300 animate-fade-right animate-duration-500">

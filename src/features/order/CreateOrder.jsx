@@ -12,9 +12,8 @@ import { addOrder, getCart, getTotalPrice } from "../cart/cartSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { formatCurrency, ScrollUp } from "../utils/helpers";
 import store from "../../store";
-import { clearAddress, fetchAddress } from "../user/userSlice";
+import { clearAddress, clearErrors, fetchAddress } from "../user/userSlice";
 import toast from "react-hot-toast";
-import ToasterCustome from "../utils/Toaster";
 import { AnimatePresence, motion } from "framer-motion";
 
 // https://uibakery.io/regex-library/phone-number
@@ -44,26 +43,23 @@ function CreateOrder() {
 
 	function handleAddress(e) {
 		e.preventDefault();
-		toast.promise(dis(fetchAddress()), {
-			loading: "Getting address...",
-			success: "Location got successfuly!",
-			error: "Something went wrong :(",
-		});
+		dis(fetchAddress());
 	}
 
 	useEffect(() => {
 		dis(clearAddress());
+		dis(clearErrors());
 		if (address) setAddressState(address);
 	}, [address, dis]);
 
 	useEffect(() => {
+		toast.dismiss();
 		if (cart.length == 0) nav("/menu");
 		ScrollUp();
 	}, [cart, nav]);
 
 	return (
-		<div className="h-FullHeight w-full flex px-5 py-10 sm:p-20 items-center flex-col gap-7 text-black">
-			<ToasterCustome />
+		<div className="h-auto sm:h-FullHeight w-full flex px-5 py-10 sm:p-20 items-center flex-col gap-7 text-black bg-white bg-opacity-50">
 			<h2 className="text-center text-2xl font-medium text-black py-2 px-3 rounded-lg animate-fade-down animate-duration-500">
 				Ready to order? Let&apos;s go!
 			</h2>
@@ -148,27 +144,34 @@ function CreateOrder() {
 					</button>
 					<GetAddressBtn
 						isVisible={!addressState.trim()}
+						disable={isLoadingAddress}
 						handler={handleAddress}>
 						{isLoadingAddress ? "Loading..." : "Get Address"}
 					</GetAddressBtn>
 				</div>
 			</Form>
+			{error && !isLoadingAddress && (
+				<p className="text-RED bg-black rounded-lg py-3 px-2 text-lg text-center md:px-5 animate-fade-down animate-duration-500">
+					{error}
+				</p>
+			)}
 		</div>
 	);
 }
 
-function GetAddressBtn({ handler, isVisible, children }) {
+function GetAddressBtn({ handler, isVisible, children, disable }) {
 	return (
 		<AnimatePresence>
 			{isVisible && (
 				<motion.button
+					disabled={disable}
 					className="bg-yellow-300 w-full text-white py-1.5 px-4 rounded-lg hover:bg-PINK hover:text-white transition-colors duration-300 font-normal disabled:cursor-not-allowed"
 					initial={{ opacity: 0, scale: 0.7 }}
 					animate={{ opacity: 1, scale: 1 }}
 					exit={{ opacity: 0, scale: 0.8 }}
 					transition={{ type: "just" }}
 					style={{ zIndex: 100 }}
-					onClick={handler}>
+					onClick={disable ? null : handler}>
 					{children}
 				</motion.button>
 			)}
