@@ -44,10 +44,8 @@ function OrderItem({ order }) {
 				<span>{priority ? "Yes" : "No"}</span>
 			</Item>
 			<Item>
-				<span>Priority Price : </span>
-				<span>
-					{priority ? formatCurrency(priorityPrice) : formatCurrency(0)}
-				</span>
+				<span>Status : </span>
+				<span>{status}</span>
 			</Item>
 			<Item>
 				<span>Order Price : </span>

@@ -1,12 +1,23 @@
+/* eslint-disable react/prop-types */
 import { useFetcher } from "react-router-dom";
 import { updateOrder } from "../services/apiRestaurant";
+import { useDispatch } from "react-redux";
+import { updateOrderState } from "../cart/cartSlice";
 
-function UpdateOrder() {
+function UpdateOrder({ order }) {
 	const fetcher = useFetcher();
+	const dis = useDispatch();
+
+	function handleSubmit() {
+		dis(updateOrderState(order.id));
+		console.log(order);
+	}
 
 	return (
 		<fetcher.Form method="PATCH">
-			<button className="bg-RED rounded-lg px-5 py-2 text-white mt-3">
+			<button
+				className="bg-RED rounded-lg px-5 py-2 text-white mt-3 sm:hover:bg-PINK transition-colors duration-300 animate-fade-up"
+				onClick={handleSubmit}>
 				Make priority
 			</button>
 		</fetcher.Form>
@@ -15,8 +26,6 @@ function UpdateOrder() {
 
 export async function action({ params }) {
 	const data = { priority: true };
-	console.log(params.orderId);
-	console.log(params);
 	await updateOrder(params.orderId, data);
 	return null;
 }

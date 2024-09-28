@@ -33,11 +33,31 @@ const cartReducer = createSlice({
 		addOrder(state, action) {
 			state.orders.push(action.payload);
 		},
+		updateOrderState(state, action) {
+			const id = action.payload; // Assuming action.payload contains orderId
+			console.log("id", id);
+
+			const order = state.orders.find((order) => order.id === id); // Change 'id' to your actual identifier
+
+			if (order) {
+				// Update the order's Priority property
+				order.priority = true;
+				// You can also update other properties here if needed
+			}
+			console.log("neworder", order);
+		},
 	},
 });
 
-export const { addItem, deleteItem, increase, decrease, clearList, addOrder } =
-	cartReducer.actions;
+export const {
+	addItem,
+	deleteItem,
+	increase,
+	decrease,
+	clearList,
+	addOrder,
+	updateOrderState,
+} = cartReducer.actions;
 
 export default cartReducer.reducer;
 

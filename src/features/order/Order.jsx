@@ -13,15 +13,15 @@ import { useDispatch } from "react-redux";
 import { clearList } from "../cart/cartSlice";
 import UpdateOrder from "./UpdateOrder";
 
+// Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
+
 function Order() {
 	const order = useLoaderData();
-	// Everyone can search for all orders, so for privacy reasons we're gonna gonna exclude names or address, these are only for the restaurant staff
 	const { id, status, priority, priorityPrice, orderPrice, estimatedDelivery } =
 		order;
 
 	const deliveryIn = calcMinutesLeft(estimatedDelivery);
 	const dis = useDispatch();
-	console.log("orderrrrr: ", order);
 
 	useEffect(() => {
 		dis(clearList());

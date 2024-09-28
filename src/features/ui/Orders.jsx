@@ -7,8 +7,8 @@ import { ScrollUp } from "../utils/helpers";
 function Orders() {
 	const username = useSelector((state) => state.user.username);
 	const orders = useSelector((state) => state.cart.orders);
+
 	const nav = useNavigate();
-	console.log(orders);
 
 	useEffect(() => {
 		if (!username.trim()) nav("/createUser");
