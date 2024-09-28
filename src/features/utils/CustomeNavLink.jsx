@@ -19,7 +19,9 @@ function CustomeNavLink({
 			<NavLink
 				to={to}
 				className={({ isActive }) =>
-					isActive ? `${classes} text-RED` : `${classes} relative`
+					isActive
+						? `${classes} text-RED`
+						: `${classes} relative hover:opacity-60 transition-all duration-300`
 				}>
 				{children}
 			</NavLink>

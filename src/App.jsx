@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./features/ui/HomePage/Home";
 import Error from "./features/ui/Error";
 import Order, { loader as OrderLoader } from "./features/order/Order";
+import { action as OrderAction } from "./features/order/UpdateOrder";
 import CreateOrder, {
 	action as NewOrderAction,
 } from "./features/order/CreateOrder";
@@ -27,7 +28,12 @@ const router = createBrowserRouter([
 				errorElement: <Error />,
 				loader: MenuLoader,
 			},
-			{ path: "order/:orderId", element: <Order />, loader: OrderLoader },
+			{
+				path: "order/:orderId",
+				element: <Order />,
+				loader: OrderLoader,
+				action: OrderAction,
+			},
 			{ path: "order/new", element: <CreateOrder />, action: NewOrderAction },
 			{ path: "/reservation", element: <Reserve /> },
 			{ path: "/chef/:chefId", element: <InfoChef /> },
