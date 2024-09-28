@@ -52,7 +52,7 @@ function Section1() {
 							src={TablePic}
 						/>
 					) : (
-						<div className="h-80 base:-mt-20 animate-fade-left animate-duration-700 skeleton w-80 bg-gray-500"></div>
+						<div className="md:inline-block hidden h-80 base:-mt-20 animate-fade-left animate-duration-700 skeleton w-80 bg-gray-500"></div>
 					)}
 				</div>
 				<ReserveModalBox />
