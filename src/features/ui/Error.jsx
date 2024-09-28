@@ -9,7 +9,7 @@ function NotFound() {
 	return (
 		<div className="h-dvh w-full flex flex-col justify-center items-center gap-7 bg-gradient-to-r from-white to-PINK text-black">
 			<h1 className="font-semibold text-2xl">Something went wrong 😢</h1>
-			<p className="text-lg font-normal text-wrap">
+			<p className="text-lg font-normal text-wrap px-20 text-center ">
 				{" "}
 				- {err.data || err.message}
 			</p>
