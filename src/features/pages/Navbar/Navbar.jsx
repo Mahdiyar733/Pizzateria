@@ -127,7 +127,7 @@ function ModalBox() {
 				onClick={(e) => e.stopPropagation()}>
 				<h3 className={`text-black tracking-tight font-extrabold text-3xl `}>
 					Search your order with{" "}
-					<span className="bg-clip-text font-black bg-[url('/pizza.jpeg')] bg-cover bg-center text-opacity-15 tracking-tigh text-black">
+					<span className="bg-clip-text font-black bg-gradient-to-b from-PINK to-red-500 bg-cover bg-center text-opacity-15 tracking-tigh text-black">
 						your order number
 					</span>
 				</h3>
