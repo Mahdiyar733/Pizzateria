@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
-import ModalBoxAnimate from "../utils/ModalBoxAnimate";
+import ModalBoxAnimate from "../common/ModalBoxAnimate";
 import { useDispatch, useSelector } from "react-redux";
-import { closeIngredients } from "../utils/ModalBoxSlice";
-import RecipeSvg from "../../svg/recipeSvg";
-import CloseBtnModal from "../utils/CloseBtnModal";
+import { closeIngredients } from "../common/ModalBoxSlice";
+import RecipeSvg from "../../icons/recipeSvg";
+import CloseBtnModal from "../common/CloseBtnModal";
 
 function IngredientsModal() {
 	const isOpen = useSelector(

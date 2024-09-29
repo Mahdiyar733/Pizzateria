@@ -1,19 +1,12 @@
 import { useEffect, useState } from "react";
-import { calcMinutesLeft, formatCurrency } from "../utils/helpers";
+import { calcMinutesLeft, formatCurrency } from "../common/helpers";
 import { useNavigate } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 function OrderItem({ order }) {
 	const nav = useNavigate();
-	const {
-		customer,
-		orderPrice,
-		phone,
-		status,
-		priorityPrice,
-		priority,
-		estimatedDelivery,
-	} = order;
+	const { customer, orderPrice, phone, status, priority, estimatedDelivery } =
+		order;
 
 	const [deliveryTime, setDeliveryTime] = useState(() =>
 		calcMinutesLeft(estimatedDelivery),

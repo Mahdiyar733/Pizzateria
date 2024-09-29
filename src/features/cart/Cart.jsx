@@ -10,7 +10,7 @@ import {
 	getTotalPrice,
 } from "./cartSlice";
 import EmptyCart from "./EmptyCart";
-import { formatCurrency, ScrollUp } from "../utils/helpers";
+import { formatCurrency, ScrollUp } from "../common/helpers";
 
 export const CartItemContext = createContext();
 

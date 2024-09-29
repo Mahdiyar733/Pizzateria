@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateName } from "./userSlice";
 import { useNavigate } from "react-router-dom";
-import { ScrollUp } from "../utils/helpers";
+import { ScrollUp } from "../common/helpers";
 import toast from "react-hot-toast";
 import { clearList } from "../cart/cartSlice";
-import ToasterCustome from "../utils/Toaster";
+import ToasterCustome from "../common/Toaster";
 
 function CreateUser() {
 	const [username, setUsername] = useState("");

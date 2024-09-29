@@ -6,7 +6,7 @@ import {
 	formatCurrency,
 	formatDate,
 	ScrollUp,
-} from "../utils/helpers";
+} from "../common/helpers";
 import { getOrder } from "../services/apiRestaurant";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";

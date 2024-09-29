@@ -1,10 +1,10 @@
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { getMenu } from "../services/apiRestaurant";
-import MenuHeader from "../ui/HomePage/Section-three/MenuHeader";
+import MenuHeader from "../pages/HomePage/Section-three/MenuHeader";
 import { motion } from "framer-motion";
-import Pizza from "../ui/HomePage/Section-three/Pizza";
+import Pizza from "../pages/HomePage/Section-three/Pizza";
 import { useEffect } from "react";
-import { ScrollUp } from "../utils/helpers";
+import { ScrollUp } from "../common/helpers";
 import { useSelector } from "react-redux";
 import IngredientsModal from "./IngredientsModal";
 

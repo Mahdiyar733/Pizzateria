@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { formatCurrency } from "../utils/helpers";
-import DeleteSvg from "../../svg/DeleteSvg";
-import IncreaseSvg from "../../svg/IncreaseSvg";
-import DecreaseSvg from "../../svg/DecreaseSvg";
-import InfoSvg from "../../svg/InfoSvg";
-import ModalBoxAnimate from "../utils/ModalBoxAnimate";
+import { formatCurrency } from "../common/helpers";
+import DeleteSvg from "../../icons/DeleteSvg";
+import IncreaseSvg from "../../icons/IncreaseSvg";
+import DecreaseSvg from "../../icons/DecreaseSvg";
+import InfoSvg from "../../icons/InfoSvg";
+import ModalBoxAnimate from "../common/ModalBoxAnimate";
 import { useContext } from "react";
 import { CartItemContext } from "./Cart";
-import CloseBtnModal from "../utils/CloseBtnModal";
+import CloseBtnModal from "../common/CloseBtnModal";
 import { useDispatch } from "react-redux";
 import { decrease, deleteItem, increase } from "./cartSlice";
 

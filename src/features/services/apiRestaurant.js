@@ -1,7 +1,7 @@
 const API_URL = "https://react-fast-pizza-api.onrender.com/api";
-import chef1 from "../ui/ReservePage/Section-three/chef1.png";
-import chef2 from "../ui/ReservePage/Section-three/chef2.png";
-import chef3 from "../ui/ReservePage/Section-three/chef3.png";
+import chef1 from "../pages/ReservePage/Section-three/chef1.png";
+import chef2 from "../pages/ReservePage/Section-three/chef2.png";
+import chef3 from "../pages/ReservePage/Section-three/chef3.png";
 
 export async function getMenu() {
 	const res = await fetch(`${API_URL}/menu`);
