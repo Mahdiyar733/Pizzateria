@@ -1,5 +1,4 @@
 import PizzaPic from "./PizzaHomeP.jpg";
-import LittlePizza from "./LittlePizza.png";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
@@ -15,16 +14,13 @@ function SectionOne() {
 			style={{ backgroundImage: `url(${PizzaPic})` }}
 			className={`bg-cover bg-right h-[500px] lg:h-FullHeight`}>
 			<div className="backdrop-brightness-75 h-full w-full flex justify-evenly items-center flex-col py-16 sm:py-12 lg:py-40">
-				<span
-					role="badge"
-					className="py-2 px-4 bg-PINK text-RED rounded-full text-xs font-semibold flex flex-row items-center gap-1">
-					Beyond Speedy{" "}
-					<img
-						className="w-5 object-cover"
-						src={LittlePizza}
-						alt="pizza"
-					/>
-				</span>
+				<ul className="steps steps-horizontal text-xs text-white md:mb-3 md:text-lg lg:mb-7">
+					<li className="step step-error">Login</li>
+					<li className="step step-error">Choose pizza</li>
+					<li className="step step-error">Order</li>
+					<li className="step step-error">Follow up order</li>
+				</ul>
+
 				{!isMobile ? (
 					<motion.h2
 						viewport={{ once: true, amount: 0.7 }}
