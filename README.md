@@ -19,15 +19,17 @@ Pizzateria aims to revolutionize the way pizza lovers order their favorite meals
 - Users should be able to mark their order as “priority” order even after it has been placed. 
 
 ## 📷 Screenshots 📷
+<img width="1470" alt="Screenshot 1403-07-12 at 16 18 23" src="https://github.com/user-attachments/assets/219b23f0-3eb3-4877-98d0-b435063021e2">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 18 33" src="https://github.com/user-attachments/assets/0a4850aa-4cba-4935-942f-d8f692cc1f2f">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 18 43" src="https://github.com/user-attachments/assets/8f18fa5b-b9e0-402f-9aa9-e077c3f5bf49">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 18 55" src="https://github.com/user-attachments/assets/aa33d9ba-9370-4f72-bc58-c563c5268bd8">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 19 07" src="https://github.com/user-attachments/assets/c527e194-b744-4514-812f-95d65bd85540">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 19 34" src="https://github.com/user-attachments/assets/591c0e53-3b2d-48af-979c-80572a05155d">
+<img width="1470" alt="Screenshot 1403-07-12 at 16 20 10" src="https://github.com/user-attachments/assets/4cd63f1a-5edb-4e31-a4f3-f95169bb7c57">
 <img width="1470" alt="Screenshot 1403-07-12 at 16 20 30" src="https://github.com/user-attachments/assets/7f6e1a5b-94de-4f42-a53f-ee5c80fd3162">
 <img width="1470" alt="Screenshot 1403-07-12 at 16 20 19" src="https://github.com/user-attachments/assets/5e767fae-a5fd-4f3e-b536-1c008cd3a0db">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 20 10" src="https://github.com/user-attachments/assets/4cd63f1a-5edb-4e31-a4f3-f95169bb7c57">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 19 34" src="https://github.com/user-attachments/assets/591c0e53-3b2d-48af-979c-80572a05155d">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 19 07" src="https://github.com/user-attachments/assets/c527e194-b744-4514-812f-95d65bd85540">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 18 55" src="https://github.com/user-attachments/assets/aa33d9ba-9370-4f72-bc58-c563c5268bd8">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 18 43" src="https://github.com/user-attachments/assets/8f18fa5b-b9e0-402f-9aa9-e077c3f5bf49">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 18 33" src="https://github.com/user-attachments/assets/0a4850aa-4cba-4935-942f-d8f692cc1f2f">
-<img width="1470" alt="Screenshot 1403-07-12 at 16 18 23" src="https://github.com/user-attachments/assets/219b23f0-3eb3-4877-98d0-b435063021e2">
+
+
 
 ## 🤖 Technologies 🤖
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) 
@@ -35,6 +37,9 @@ Pizzateria aims to revolutionize the way pizza lovers order their favorite meals
  ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
  ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
  ![Redux](https://img.shields.io/badge/redux-%23593d88.svg?style=for-the-badge&logo=redux&logoColor=white) 
- ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white) 
 
+## How to use ?
+write these commands in your terminal :
+- npm i
+- npm run dev
 		
