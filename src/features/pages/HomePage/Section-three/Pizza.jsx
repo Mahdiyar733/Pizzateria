@@ -7,6 +7,7 @@ import { openIngredients } from "../../../common/ModalBoxSlice";
 import { addItem } from "../../../cart/cartSlice";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
+import pizzapic from "../../../../icons/pizza.jpg";
 
 const PizzaContext = createContext();
 
@@ -99,7 +100,7 @@ function PizzaCart() {
 	return (
 		<>
 			<img
-				src={imageUrl}
+				src={pizzapic}
 				alt={name}
 				className="hidden"
 				onLoad={() => setIsLoading(false)}
@@ -108,7 +109,7 @@ function PizzaCart() {
 
 			{!isLoading ? (
 				<div
-					style={{ backgroundImage: `url(${imageUrl})` }}
+					style={{ backgroundImage: `url(${pizzapic})` }}
 					className={`h-1/2 w-full min-w-64 flex justify-center items-center bg-cover bg-center relative min-h-[196px] ${
 						soldOut ? "grayscale" : "grayscale-0"
 					}`}>
